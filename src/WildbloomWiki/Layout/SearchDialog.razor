@@ -1,0 +1,99 @@
+@inject WikiService Wiki
+@inject NavigationManager Navigation
+
+@if (Open)
+{
+    <div class="search-backdrop" @onclick="Close">
+        <div class="search-panel" @onclick:stopPropagation="true">
+            <div class="search-input-row">
+                <svg viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none" /><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                <input @ref="_input" class="search-input" placeholder="Search items, flowers, guides…"
+                       value="@_query" @oninput="OnInput" @onkeydown="OnKey" />
+                <kbd @onclick="Close">Esc</kbd>
+            </div>
+            <div class="search-results">
+                @if (_hits.Count == 0)
+                {
+                    <div class="search-empty">@(_query.Length == 0 ? "Type to search the wiki." : "No matches.")</div>
+                }
+                @for (var i = 0; i < _hits.Count; i++)
+                {
+                    var hit = _hits[i];
+                    var index = i;
+                    <a class="search-hit @(index == _active ? "active" : "")" href="@hit.Href" @onclick="Close" @onmouseover="() => _active = index">
+                        @if (hit.Icon is not null)
+                        {
+                            <img src="@hit.Icon" alt="" class="pixel" width="28" height="28" />
+                        }
+                        else
+                        {
+                            <span class="search-hit-glyph">§</span>
+                        }
+                        <span class="search-hit-title">@hit.Title</span>
+                        <span class="search-hit-section">@hit.Section</span>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool Open { get; set; }
+    [Parameter] public EventCallback<bool> OpenChanged { get; set; }
+
+    ElementReference _input;
+    string _query = "";
+    List<SearchHit> _hits = [];
+    int _active;
+    bool _focus;
+
+    protected override void OnParametersSet()
+    {
+        if (Open) _focus = true;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (_focus && Open)
+        {
+            _focus = false;
+            await _input.FocusAsync();
+        }
+    }
+
+    void OnInput(ChangeEventArgs e)
+    {
+        _query = e.Value?.ToString() ?? "";
+        _hits = Wiki.Search(_query).Take(20).ToList();
+        _active = 0;
+    }
+
+    async Task OnKey(KeyboardEventArgs e)
+    {
+        switch (e.Key)
+        {
+            case "Escape":
+                await Close();
+                break;
+            case "ArrowDown":
+                _active = Math.Min(_active + 1, _hits.Count - 1);
+                break;
+            case "ArrowUp":
+                _active = Math.Max(_active - 1, 0);
+                break;
+            case "Enter" when _hits.Count > 0:
+                var href = _hits[_active].Href;
+                await Close();
+                Navigation.NavigateTo(href);
+                break;
+        }
+    }
+
+    async Task Close()
+    {
+        _query = "";
+        _hits = [];
+        await OpenChanged.InvokeAsync(false);
+    }
+}

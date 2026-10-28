@@ -1,0 +1,61 @@
+@page "/recipes"
+@inject WikiService Wiki
+
+<PageTitle>Recipes · Wildbloom Wiki</PageTitle>
+
+<Breadcrumbs Current="Recipes" />
+
+<h1>Recipes</h1>
+<p class="lead">
+    All @Wiki.Data.Recipes.Count recipes. Crafting table recipes work like vanilla. For pool infusion, the Rune Altar
+    and the Mana Brewery, drop the ingredients on top of the block and it spends the mana.
+</p>
+
+<div class="filters">
+    <input class="filter-input" placeholder="Find a recipe by output or ingredient…" @bind="_filter" @bind:event="oninput" />
+    <div class="chips">
+        <button class="chip-btn @(_type is null ? "on" : "")" @onclick="() => _type = null">All <span>@Wiki.Data.Recipes.Count</span></button>
+        @foreach (var (type, label) in Types)
+        {
+            var t = type;
+            <button class="chip-btn @(_type == t ? "on" : "")" @onclick="() => _type = t">@label <span>@Wiki.Data.Recipes.Count(r => r.Type == t)</span></button>
+        }
+    </div>
+</div>
+
+@foreach (var group in Shown.GroupBy(r => r.Type))
+{
+    <h2>@Types.First(t => t.Type == group.Key).Label</h2>
+    <div class="recipe-row">
+        @foreach (var r in group)
+        {
+            <RecipeCard Recipe="r" />
+        }
+    </div>
+}
+@if (!Shown.Any())
+{
+    <p class="muted">No recipe matches “@_filter”.</p>
+}
+
+@code {
+    string _filter = "";
+    string? _type;
+
+    static readonly (string Type, string Label)[] Types =
+    [
+        ("crafting", "Crafting Table"),
+        ("pool", "Pool Infusion"),
+        ("altar", "Rune Altar"),
+        ("brewery", "Mana Brewery"),
+    ];
+
+    IEnumerable<Recipe> Shown => Wiki.Data.Recipes
+        .Where(r => _type is null || r.Type == _type)
+        .Where(r => _filter.Length == 0
+                    || Wiki.Name(r.Output).Contains(_filter, StringComparison.OrdinalIgnoreCase)
+                    || r.Ingredients.Any(i => Wiki.Name(i).Contains(_filter, StringComparison.OrdinalIgnoreCase)))
+        .OrderBy(r => Array.FindIndex(Types, t => t.Type == r.Type))
+        .ThenBy(r => r.Type == "crafting" ? Wiki.Name(r.Output) : "")
+        .ThenBy(r => r.Cost);
+}

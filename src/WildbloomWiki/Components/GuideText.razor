@@ -1,0 +1,175 @@
+@using System.Text.RegularExpressions
+@inject WikiService Wiki
+
+@* Renders Lexicon text. Recipe text in it is replaced by real recipe cards. *@
+@foreach (var block in Parse())
+{
+    switch (block)
+    {
+        case Para p:
+            <p>@((MarkupString)Wiki.Linkify(p.Text, SelfId))</p>
+            break;
+        case Heading h:
+            <h4 class="g-heading">
+                @if (h.Item?.Icon is { } icon)
+                {
+                    <img src="@icon" alt="" class="pixel" width="24" height="24" />
+                }
+                @if (h.Item is not null && h.Item.Id != SelfId)
+                {
+                    <a href="@WikiService.ItemHref(h.Item)">@h.Text</a>
+                }
+                else
+                {
+                    @h.Text
+                }
+                @if (h.Meta is not null)
+                {
+                    <span class="g-meta">@h.Meta</span>
+                }
+            </h4>
+            break;
+        case ListBlock l:
+            @if (l.Ordered)
+            {
+                <ol class="g-list">
+                    @foreach (var li in l.Items)
+                    {
+                        <li>@((MarkupString)Wiki.Linkify(li, SelfId))</li>
+                    }
+                </ol>
+            }
+            else
+            {
+                <ul class="g-list @(l.Plain ? "g-plain" : "")">
+                    @foreach (var li in l.Items)
+                    {
+                        <li>@((MarkupString)FormatListItem(li))</li>
+                    }
+                </ul>
+            }
+            break;
+        case Recipes r:
+            <div class="recipe-row">
+                @foreach (var recipe in r.List)
+                {
+                    <RecipeCard Recipe="recipe" ShowNames="false" />
+                }
+            </div>
+            break;
+    }
+}
+
+@code {
+    [Parameter, EditorRequired] public IReadOnlyList<string> Lines { get; set; } = [];
+    /// <summary>Item the surrounding section is about, if any.</summary>
+    [Parameter] public Item? Context { get; set; }
+    /// <summary>Don't link this item (we're on its page).</summary>
+    [Parameter] public string? SelfId { get; set; }
+
+    abstract record Block;
+    record Para(string Text) : Block;
+    record Heading(string Text, string? Meta, Item? Item) : Block;
+    record ListBlock(List<string> Items, bool Ordered, bool Plain) : Block;
+    record Recipes(List<Recipe> List) : Block;
+
+    static readonly Regex RecipeLine = new(
+        @"^(Crafting table:|shaped\b|shapeless\b|Pool infusion:|\[|.* = .*\(_ = empty\)$|Rune Altar: .*mana\.?$)",
+        RegexOptions.Compiled);
+
+    static readonly Regex Ordered = new(@"^\d+\.\s+", RegexOptions.Compiled);
+
+    // "Golden Apple: 1,200" → name + value, rendered as a two-column row.
+    string FormatListItem(string text)
+    {
+        var m = Regex.Match(text, @"^([^:]{1,40}):\s+([\d,]+.*)$");
+        return m.Success
+            ? $"<span class=\"kv-k\">{Wiki.Linkify(m.Groups[1].Value, SelfId)}</span><span class=\"kv-v\">{Wiki.Linkify(m.Groups[2].Value, SelfId)}</span>"
+            : Wiki.Linkify(text, SelfId);
+    }
+
+    List<Block> Parse()
+    {
+        var blocks = new List<Block>();
+        var context = Context;
+        var shown = new HashSet<string>();
+        var para = new List<string>();
+        ListBlock? list = null;
+
+        void Flush()
+        {
+            if (para.Count > 0) blocks.Add(new Para(string.Join(" ", para)));
+            para.Clear();
+            list = null;
+        }
+
+        for (var i = 0; i < Lines.Count; i++)
+        {
+            var raw = Lines[i];
+            var line = raw.Trim();
+            var next = i + 1 < Lines.Count ? Lines[i + 1] : "";
+
+            if (line.Length == 0)
+            {
+                Flush();
+                continue;
+            }
+
+            if (RecipeLine.IsMatch(line) && context is not null)
+            {
+                Flush();
+                var type = line.StartsWith("Pool infusion") ? "pool" : line.StartsWith("Rune Altar") ? "altar" : "crafting";
+                if (shown.Add(context.Id + type))
+                {
+                    var found = Wiki.RecipesFor(context.Id).Where(r => r.Type == type).ToList();
+                    if (found.Count > 0) blocks.Add(new Recipes(found));
+                }
+                continue;
+            }
+
+            if (line == "How to make")
+            {
+                Flush();
+                blocks.Add(new Heading(line, null, null));
+                continue;
+            }
+
+            if (raw.StartsWith("  ") || line.StartsWith("- ") || Ordered.IsMatch(line))
+            {
+                if (para.Count > 0) { blocks.Add(new Para(string.Join(" ", para))); para.Clear(); }
+                var ordered = Ordered.IsMatch(line);
+                var text = ordered ? Ordered.Replace(line, "") : line.StartsWith("- ") ? line[2..] : line;
+                if (list is null || list.Ordered != ordered)
+                {
+                    list = new ListBlock([], ordered, raw.StartsWith("  "));
+                    blocks.Add(list);
+                }
+                list.Items.Add(text);
+                continue;
+            }
+
+            var parts = line.Split("  ", 2, StringSplitOptions.TrimEntries);
+            var named = Wiki.ItemByName(parts[0]);
+            var nextIsBody = next.Trim().Length > 0;
+            var looksLikeHeading = line.Length <= 60 && !Regex.IsMatch(line, @"[.:;!?,)]$") && nextIsBody && !line.Contains(": ");
+            if (parts.Length == 2 || (looksLikeHeading && (named is not null || line.Split(' ').Length <= 6)))
+            {
+                Flush();
+                // A section about an item opens by restating its name; the section title already shows it.
+                var restated = blocks.Count == 0 && named is not null && named == Context;
+                if (named is not null) context = named;
+                if (!restated)
+                    blocks.Add(new Heading(parts[0], parts.Length == 2 ? parts[1] : null, named));
+                else if (parts.Length == 2)
+                    blocks.Add(new Heading("", parts[1], null));
+                continue;
+            }
+
+            // Each Lexicon line is its own thought; keep them as separate paragraphs.
+            Flush();
+            para.Add(line);
+        }
+        Flush();
+        return blocks;
+    }
+}

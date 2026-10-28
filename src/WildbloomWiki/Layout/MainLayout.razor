@@ -1,0 +1,140 @@
+@inherits LayoutComponentBase
+@implements IDisposable
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+@inject WikiService Wiki
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <button class="icon-btn menu-btn" aria-label="Open menu" @onclick="ToggleMenu">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+        </button>
+        <a class="brand" href="">
+            <img src="img/items/dawnpetal.png" alt="" class="pixel" width="28" height="28" />
+            <span>Wildbloom</span>
+            <span class="brand-sub">Wiki</span>
+        </a>
+        <nav class="toplinks">
+            <NavLink href="" Match="NavLinkMatch.All">Overview</NavLink>
+            <NavLink href="items">Items</NavLink>
+            <NavLink href="flowers">Flowers</NavLink>
+            <NavLink href="bosses">Bosses</NavLink>
+            <NavLink href="recipes">Recipes</NavLink>
+        </nav>
+        <div class="topbar-right">
+            <button class="search-trigger" @onclick="() => _searchOpen = true">
+                <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none" /><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                <span class="search-label">Search</span>
+                <kbd>Ctrl K</kbd>
+            </button>
+            <button class="icon-btn" aria-label="Toggle theme" title="Toggle light / dark" @onclick="ToggleTheme">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor" /></svg>
+            </button>
+            @if (Wiki.Data.Download.Length > 0)
+            {
+                <a class="btn btn-primary hide-sm" href="@Wiki.Data.Download" download>Download</a>
+            }
+        </div>
+    </div>
+</header>
+
+<div class="shell">
+    <aside class="sidebar @(_menuOpen ? "open" : "")" @onclick="() => _menuOpen = false">
+        @foreach (var group in Nav.Groups)
+        {
+            <div class="side-group">
+                <div class="side-title">@group.Title</div>
+                @foreach (var link in group.Links)
+                {
+                    <NavLink class="side-link" href="@link.Href" Match="@(link.Href == "" || link.Href == "guide" ? NavLinkMatch.All : NavLinkMatch.Prefix)">@link.Title</NavLink>
+                }
+            </div>
+        }
+        <div class="side-group">
+            <div class="side-title">External</div>
+            <a class="side-link" href="@Site.RepoUrl" target="_blank" rel="noopener">GitHub repository ↗</a>
+        </div>
+        @if (Wiki.Data.Version.Length > 0)
+        {
+            <div class="side-version">Add-on v@(Wiki.Data.Version)</div>
+        }
+    </aside>
+    @if (_menuOpen)
+    {
+        <div class="scrim" @onclick="() => _menuOpen = false"></div>
+    }
+
+    <main class="content">
+        @if (_loaded)
+        {
+            @Body
+        }
+        else
+        {
+            <div class="loading">Loading the Lexicon…</div>
+        }
+        <footer class="footer">
+            <div class="footer-brand">
+                <img src="img/items/dawnpetal.png" alt="" class="pixel" width="20" height="20" />
+                <strong>Wildbloom</strong>
+                <span>@Site.Tagline</span>
+            </div>
+            <div class="footer-links">
+                <a href="guide/getting-started">Getting Started</a>
+                <a href="items">Items</a>
+                <a href="recipes">Recipes</a>
+                <a href="@Site.RepoUrl" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <div class="footer-note">Not affiliated with Mojang or Microsoft. Wiki content is generated from the add-on files.</div>
+        </footer>
+    </main>
+</div>
+
+<SearchDialog @bind-Open="_searchOpen" />
+
+@code {
+    bool _loaded;
+    bool _menuOpen;
+    bool _searchOpen;
+    DotNetObjectReference<MainLayout>? _self;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Navigation.LocationChanged += OnLocationChanged;
+        await Wiki.LoadAsync();
+        _loaded = true;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _self = DotNetObjectReference.Create(this);
+            await JS.InvokeVoidAsync("wiki.registerHotkey", _self);
+        }
+        await JS.InvokeVoidAsync("wiki.scrollToHash");
+    }
+
+    [JSInvokable]
+    public void OpenSearch()
+    {
+        _searchOpen = true;
+        StateHasChanged();
+    }
+
+    void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        _menuOpen = false;
+        StateHasChanged();
+    }
+
+    void ToggleMenu() => _menuOpen = !_menuOpen;
+
+    async Task ToggleTheme() => await JS.InvokeVoidAsync("wiki.toggleTheme");
+
+    public void Dispose()
+    {
+        Navigation.LocationChanged -= OnLocationChanged;
+        _self?.Dispose();
+    }
+}

@@ -1,0 +1,102 @@
+@page "/guide"
+@page "/guide/{Slug}"
+@using System.Text.RegularExpressions
+@inject WikiService Wiki
+
+@if (Slug is null)
+{
+    <PageTitle>Lexicon · Wildbloom Wiki</PageTitle>
+    <Breadcrumbs Current="Lexicon" />
+    <h1>Lexicon</h1>
+    <p class="lead">Every chapter of the in-game Lexicon Wildbloom, the book you craft from a Book and an Oak Sapling.</p>
+    <div class="card-grid">
+        @foreach (var g in Wiki.Data.Guides)
+        {
+            <a class="card" href="@($"guide/{g.Slug}")">
+                <div class="card-title">@g.Title <span class="arrow">→</span></div>
+                <div class="card-desc">@Summary(g)</div>
+            </a>
+        }
+    </div>
+}
+else if (_guide is null)
+{
+    <PageTitle>Not found · Wildbloom Wiki</PageTitle>
+    <h1>Not found</h1>
+    <p>No Lexicon chapter called “@Slug”. See the <a href="guide">full Lexicon</a>.</p>
+}
+else
+{
+    <PageTitle>@_guide.Title · Wildbloom Wiki</PageTitle>
+    <div class="doc-layout">
+        <article class="doc prose">
+            <Breadcrumbs Parent="Lexicon" ParentHref="guide" Current="@_guide.Title" />
+            <h1>@_guide.Title</h1>
+            <GuideText Lines="_guide.Intro" Context="@ChapterItem(_guide)" />
+            @foreach (var s in _guide.Sections)
+            {
+                <h2 id="@s.Slug" class="anchor"><a href="@($"guide/{_guide.Slug}#{s.Slug}")">@s.Title</a></h2>
+                <GuideText Lines="s.Lines" Context="@SectionItem(s)" />
+            }
+            <div class="pager">
+                @if (_prev is not null)
+                {
+                    <a class="pager-link" href="@($"guide/{_prev.Slug}")"><span>Previous</span>« @_prev.Title</a>
+                }
+                else
+                {
+                    <span></span>
+                }
+                @if (_next is not null)
+                {
+                    <a class="pager-link next" href="@($"guide/{_next.Slug}")"><span>Next</span>@_next.Title »</a>
+                }
+            </div>
+        </article>
+        @if (_guide.Sections.Count > 1)
+        {
+            <nav class="toc">
+                <div class="toc-title">On this page</div>
+                @foreach (var s in _guide.Sections)
+                {
+                    <a href="@($"guide/{_guide.Slug}#{s.Slug}")">@s.Title</a>
+                }
+            </nav>
+        }
+    </div>
+}
+
+@code {
+    [Parameter] public string? Slug { get; set; }
+
+    Guide? _guide, _prev, _next;
+
+    static readonly Dictionary<string, string> ChapterItems = new()
+    {
+        ["rune-altar"] = "wb:rune_altar",
+        ["rituals"] = "wb:ritual_altar",
+        ["mana-enchanter"] = "wb:mana_enchanter",
+    };
+
+    protected override void OnParametersSet()
+    {
+        var guides = Wiki.Data.Guides;
+        _guide = Slug is null ? null : Wiki.Guide(Slug);
+        var i = _guide is null ? -1 : guides.IndexOf(_guide);
+        _prev = i > 0 ? guides[i - 1] : null;
+        _next = i >= 0 && i < guides.Count - 1 ? guides[i + 1] : null;
+    }
+
+    Item? ChapterItem(Guide g) =>
+        ChapterItems.TryGetValue(g.Slug, out var id) ? Wiki.Item(id) : Wiki.ItemByName(g.Title);
+
+    Item? SectionItem(GuideSection s) => Wiki.ItemByName(Regex.Replace(s.Title, @"\s*\(tier \d\)$", ""));
+
+    static string Summary(Guide g)
+    {
+        var first = g.Intro.FirstOrDefault(l => l.Trim().Length > 0 && l.Trim().EndsWith('.'))
+                    ?? g.Sections.SelectMany(s => s.Lines).FirstOrDefault(l => l.Trim().EndsWith('.'))
+                    ?? "";
+        return first.Length > 140 ? first[..137] + "…" : first;
+    }
+}

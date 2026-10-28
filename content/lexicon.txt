@@ -1,0 +1,1416 @@
+##### Getting Started
+Welcome to Wildbloom
+Wildbloom is magic made from flowers. Flowers make mana, pools store it, and you spend it to infuse items, power machines and charge gear.
+Your first 30 minutes
+1. Find or craft a Dawnpetal (Dandelion + Bone Meal) and a Tidebloom (Blue Orchid + Bone Meal). Wild ones grow in plains, forests, rivers and swamps.
+2. Craft a Small Mana Pool: stone in a U shape with a Dawnpetal in the middle (see Crafting Recipes).
+3. Place the pool, then plant flowers within 6 blocks of it. Dawnpetals need open sky and daylight. Tideblooms need a water block touching them.
+4. Make a Mana Wand (Dawnpetal on two sticks). Sneak and right-click anything from Wildbloom to read it. Right-click a pool with an empty hand to see its mana.
+5. Drop an Iron Ingot onto the pool. Once the pool holds 3,000 mana it turns into a Mana Ingot. That is how all pool infusion works: drop the items on top and wait.
+6. Turn stone into Livingrock and logs into Livingwood the same way, then craft a full Mana Pool. A Mana Diamond needs 8,000 mana, more than a Small Mana Pool holds (5,000).
+Signs to watch for
+Green sparkles from a flower: it just sent mana to a pool.
+Grey smoke from a flower: it made mana but no pool within 6 blocks had room.
+Grey smoke from a pool: it sees your items but needs more mana. A message tells you how much.
+Read the Progression chapter next for the full road from your first flower to the Heartwood Warden.
+
+##### Progression
+Stage 1: First mana
+Dawnpetal, Tidebloom, Small Mana Pool, Mana Wand.
+Goal: a pool that refills on its own.
+Stage 2: Infusion basics
+Infuse Livingrock (stone, 500), Livingwood Planks (any log, 500) and Mana Ingots (iron, 3,000).
+Craft a Mana Pool (Small Mana Pool ringed with Livingrock), a Mana Spreader, Livingwood gear and your first Mana tools.
+Plant a Living Sapling for a tree that makes mana.
+Stage 3: More flowers, first runes
+Make the Mana Ingot flowers: Hungerbloom, Nightshade, Mossbloom, Coalbloom, Harvestbloom, Smithbloom, and the first helper flowers.
+Craft a Rune Altar and make the four elemental runes (Earth, Water, Fire, Air, 4,000 each).
+Infuse a Mana Diamond (diamond, 8,000, needs a Mana Pool).
+Stage 4: Diamond flowers and the first boss
+Mana Diamond flowers (Emberbloom, Frostbloom, Soulbloom and the rest) roughly double your income.
+Mine Mana Crystal Ore between Y=0 and Y=-60.
+Craft the Ritual Altar and set 4 pools around it.
+Make a Crystal Idol and summon the Crystal Sentinel (10,000 mana).
+Stage 5: Verdant tier
+Verdant Alloy (Rune Altar, 12,000) unlocks Verdant tools, armor and the Verdant Bow.
+Make seasonal runes and a Thorn Seed, then fight the Thornmother (20,000 mana). She drops more Verdant Alloy.
+Upgrade to a Grand Mana Pool (holds 100,000).
+Stage 6: Fae Steel and the sins
+Fae Steel (Rune Altar, 30,000, needs Netherite Scrap) unlocks the Terra Blade, Gale Glaive, Fae Shovel, Netherbloom, Voidbloom and the Warp Bloom.
+Make all seven sin runes (16,000 each).
+Stage 7: The Heartwood Warden
+Craft the Warden Sigil (60,000 at the Rune Altar) and summon the Heartwood Warden (100,000 mana from the 4+ pools around the Ritual Altar). It drops Heartwood for the best tools and armor in the mod.
+
+##### Mana Pools  [Pool types | How mana flows | Charging gear | Back]
+Where mana is stored, and how it moves in and out.
+
+=== Pool types
+Pools
+  Small Mana Pool: holds 5,000
+  Mana Pool: holds 10,000
+  Grand Mana Pool: holds 100,000
+  Overflow Mana Pool: holds 10,000, pushes extra into touching pools
+
+Small Mana Pool
+Crafting table: shaped
+   [S_S]
+   [SDS]
+   [SSS]
+   D = Dawnpetal, S = Stone  (_ = empty)
+
+Mana Pool
+Crafting table: shaped
+   [R_R]
+   [RPR]
+   [RRR]
+   P = Small Mana Pool, R = Livingrock  (_ = empty)
+
+Grand Mana Pool
+Crafting table: shaped
+   [DRD]
+   [RPR]
+   [DRD]
+   D = Mana Diamond, P = Mana Pool, R = Livingrock  (_ = empty)
+
+Overflow Mana Pool
+Crafting table: shapeless: Mana Pool + Mana Ingot + Hopper
+
+A pool's surface rises as it fills (5 levels).
+
+=== How mana flows
+Filling
+Every flower and generator sends its mana to the nearest pool within 6 blocks. When that pool is full, the rest goes to the next nearest. Pools can be above, below or beside the flower.
+Spending
+Machines, altars and helper flowers take mana from their own small buffer first (filled by Mana Spreaders), then from pools around them: 6 blocks for altars and machines, 8 for helper flowers and the Elevator. They can add up several pools together.
+Reading a pool
+Right-click a pool with an empty hand, or sneak-right-click it with the Mana Wand. The Mana Gauge shows the fill of a pool within 2 blocks as a column of sparkles (6 = full).
+Overflow pools
+Once over 90% full, an Overflow Mana Pool pushes 500 mana a second into every pool touching it. Put it in the middle of your flowers and chain normal pools to it.
+
+=== Charging gear
+Charging and repairing
+Drop any mana tool, weapon, battery or the Mana Band onto a pool. Every second it gains up to 1,000 charge and repairs up to 25 durability (2 mana per point).
+Tool charge shows in the item's tooltip. Tools still work as normal tools with no charge; they just lose their special abilities.
+Other ways
+Mana Battery / Tablet: right-click a pool to empty the battery into it, sneak-right-click to fill the battery (up to 5,000 per click).
+Mana Mirror: charges the gear in your off hand from a bound pool up to 64 blocks away.
+Mana Band (off hand): feeds 300 charge every half second into the mana gear in your main hand.
+Full Livingwood armor: slowly charges the mana gear in your hand.
+
+##### Moving Mana  [Spreaders and relays | Lenses | Sparks | Back]
+Spreaders, relays, prisms, gates, lenses and sparks.
+
+=== Spreaders and relays
+Mana Spreader
+Put it touching a pool. Every second it pulls up to 600 mana from the pool and fires a 300 mana pulse in the direction it faces, up to 24 blocks. Right-click it with the Mana Wand to turn it (up, down, then the four sides).
+The pulse flies through air, water and non-solid blocks and stops at the first solid block. If that block is a pool, relay, prism, gate, machine or altar, it receives the mana. Anything else wastes the pulse.
+Pulses lose 1% per block travelled (never more than half).
+Mana Relay
+Catches pulses and fires them on in the direction it faces. Use relays to go around corners or past 24 blocks. Holds 2,000.
+Mana Prism
+Like a relay but splits each pulse three ways: forward and to both sides (or east and west if it faces up or down).
+Mana Gate
+A relay that only fires while it has a redstone signal. Use it to switch a line on and off.
+Sun Mirror
+A spreader with its own power: in daylight under open sky it gathers 40 mana a second and fires it like a spreader. No pool needed.
+
+=== Lenses
+Right-click a Spreader, Relay, Gate or Sun Mirror with a lens to fit it. Fitting a new lens gives back the old one.
+
+Velocity Lens
+Range 48 instead of 24.
+shapeless: Glass Pane + Sugar + Mana Ingot
+
+Weight Lens
+Fires 900 mana pulses (3x), but only every 2 seconds.
+shapeless: Glass Pane + Iron Block + Mana Ingot
+
+Bounce Lens
+When the pulse hits a block that can't take mana, it bounces straight back once instead of being wasted, so it can reach a pool or relay on the far side of the spreader.
+shapeless: Glass Pane + Slime Ball + Mana Ingot
+
+Piercing Lens
+The pulse passes through the first wrong block. Good for shooting through one wall.
+shapeless: Glass Pane + Arrow + Mana Ingot
+
+Pool Filter Lens
+Only delivers to pools. The pulse ignores machines and relays it hits.
+shapeless: Glass Pane + Lapis Lazuli + Mana Ingot
+
+=== Sparks
+Mana Spark
+Right-click a pool with a Spark to attach it. Every second, sparked pools within 12 blocks of each other even out how full they are (up to 400 mana a second per pair). No line of sight needed.
+Use Sparks to feed the Ritual Altar's 4 pools from one big pool, or to share mana between a flower farm and your workshop.
+
+How to make
+Crafting table: shapeless: Mana Ingot + Blaze Powder
+
+##### Generating Flowers  [Dawnpetal T1 | Tidebloom T1 | Hungerbloom T2 | Coalbloom T2 | Smithbloom T2 | Harvestbloom T2 | Mossbloom T2 | Nightshade T2 | Brewbloom T3 | Tomebloom T3 | Anglerbloom T3 | Lunabloom T3 | Frostbloom T3 | Dunebloom T3 | Galebloom T3 | Deepbloom T3 | Echobloom T3 | Emberbloom T3 | Soulbloom T3 | Cinderbloom T3 | Stormbloom T3 | Netherbloom T4 | Voidbloom T4 | Back]
+23 flowers that make mana. Every flower sends mana to pools within 6 blocks, once every 2 seconds.
+Tier 1 is crafted. Tier 2 needs a Mana Ingot, tier 3 a Mana Diamond and tier 4 Fae Steel, plus a lower flower and a signature item.
+
+=== Dawnpetal T1
+Dawnpetal  tier 1
+Makes 40 mana every 2 s (1,200 a minute) during the day, as long as nothing blocks the sky above it. Nothing at night.
+
+Tip
+Your first flower. Grows wild in plains and forests. One Dawnpetal fills a Small Mana Pool in about 4 minutes of daylight; six do it in under a minute.
+
+How to make
+Crafting table: shapeless: Dandelion + Bone Meal
+
+=== Tidebloom T1
+Tidebloom  tier 1
+Makes 40 mana every 2 s (1,200 a minute) while at least one of these touches one of its six sides: Water, Flowing Water. More touching blocks do not add more.
+
+Tip
+Grows wild by rivers, swamps and forests. A single water source block next to it is enough, so it works day and night.
+
+How to make
+Crafting table: shapeless: Blue Orchid + Bone Meal
+
+=== Hungerbloom T2
+Hungerbloom  tier 2
+Eats dropped items lying on top of it, up to 4 items every 2 s, and turns them into mana:
+  Golden Apple: 1,200
+  Cake: 600
+  Golden Carrot: 500
+  Rabbit Stew: 320
+  Cooked Beef: 300
+  Cooked Porkchop: 300
+  Cooked Mutton: 260
+  Pumpkin Pie: 260
+  Mushroom Stew: 250
+  Cooked Salmon: 240
+  Cooked Chicken: 220
+  Cooked Rabbit: 220
+  Cooked Cod: 200
+  Baked Potato: 160
+  Bread: 150
+  Beef: 120
+  Porkchop: 120
+  Apple: 100
+  Mutton: 100
+  Chicken: 90
+  Rabbit: 90
+  Carrot: 70
+  Potato: 60
+  Beetroot: 60
+  Cookie: 60
+  Wheat: 40
+  Melon Slice: 40
+  Sweet Berries: 40
+
+Tip
+Great for spare food. Cake and golden apples are worth the most. Drop food on it with a hopper or a dropper clock.
+
+How to make
+Pool infusion: drop Dawnpetal + Mana Ingot + Wheat into a pool holding 2,000 mana (Small Mana Pool or bigger).
+
+=== Coalbloom T2
+Coalbloom  tier 2
+Eats dropped items lying on top of it, up to 2 items every 2 s, and turns them into mana:
+  Coal Block: 2,500
+  Blaze Rod: 600
+  Coal: 280
+  Charcoal: 240
+
+Tip
+A coal block is worth 2,500 mana. Good use for a coal mine haul.
+
+How to make
+Pool infusion: drop Dawnpetal + Mana Ingot + Coal into a pool holding 2,000 mana (Small Mana Pool or bigger).
+
+=== Smithbloom T2
+Smithbloom  tier 2
+Eats dropped items lying on top of it, up to 2 items every 2 s, and turns them into mana:
+  any Chestplate: 520
+  any Leggings: 480
+  any Helmet: 320
+  any Sword: 300
+  any Boots: 280
+  any Pickaxe: 260
+  any Axe: 260
+  any Shovel: 160
+  any Hoe: 160
+  Bow: 140
+  Fishing Rod: 120
+  Shears: 120
+Only damaged gear counts. The value scales with how worn the item is (a nearly broken item is worth the full amount, never less than 20). Undamaged gear is left alone, so it will not eat your good tools.
+
+Tip
+Turns worn-out gear from mob farms into mana.
+
+How to make
+Pool infusion: drop Dawnpetal + Mana Ingot + Iron Ingot into a pool holding 2,000 mana (Small Mana Pool or bigger).
+
+=== Harvestbloom T2
+Harvestbloom  tier 2
+Every 2 s it looks for fully grown crops within 4 blocks (one block up or down) and drains up to 4 of them back to seedlings, for 54 mana each. The crops do not drop anything, so plant a field just for it.
+
+Tip
+Use a Tiller and an automatic farm around it, or a Spring ritual to grow everything at once.
+
+How to make
+Pool infusion: drop Dawnpetal + Mana Ingot + Wheat Seeds + Bone Meal into a pool holding 2,500 mana (Small Mana Pool or bigger).
+
+=== Mossbloom T2
+Mossbloom  tier 2
+Makes 50 mana every 2 s (1,500 a minute) while at least one of these touches one of its six sides: Moss Block, Vine, any Leaves, Mossy Cobblestone, Mossy Stone Bricks, Moss Carpet, Azalea. More touching blocks do not add more.
+
+Tip
+Easiest steady flower: plant it under a tree so leaves touch it, or on a moss block.
+
+How to make
+Pool infusion: drop Tidebloom + Mana Ingot + Moss Block into a pool holding 2,000 mana (Small Mana Pool or bigger).
+
+=== Nightshade T2
+Nightshade  tier 2
+Makes 90 mana every 2 s (2,700 a minute) at night. Below Y=30 it counts as always night, so a Nightshade in a cave or basement works all day.
+
+Tip
+Pairs with Dawnpetal: one works by day, the other by night. Underground it never stops.
+
+How to make
+Pool infusion: drop Tidebloom + Mana Ingot + Spider Eye into a pool holding 2,000 mana (Small Mana Pool or bigger).
+
+=== Brewbloom T3
+Brewbloom  tier 3
+Eats dropped items lying on top of it, up to 2 items every 2 s, and turns them into mana:
+  Lingering Potion: 1,100
+  Splash Potion: 900
+  Potion: 700
+  Glass Bottle: 60
+
+Tip
+Splash and lingering potions are worth more than normal ones.
+
+How to make
+Pool infusion: drop Hungerbloom + Mana Diamond + Glass Bottle into a pool holding 6,000 mana (Mana Pool or bigger).
+
+=== Tomebloom T3
+Tomebloom  tier 3
+Eats dropped items lying on top of it, up to 2 items every 2 s, and turns them into mana:
+  Enchanted Book: 2,500
+  Writable Book: 200
+  Book: 150
+  Paper: 20
+
+Tip
+Enchanted books you don't want are worth 2,500 each.
+
+How to make
+Pool infusion: drop Hungerbloom + Mana Diamond + Book into a pool holding 6,000 mana (Mana Pool or bigger).
+
+=== Anglerbloom T3
+Anglerbloom  tier 3
+Eats dropped items lying on top of it, up to 4 items every 2 s, and turns them into mana:
+  Nautilus Shell: 1,500
+  Pufferfish: 220
+  Tropical Fish: 160
+  Salmon: 140
+  Cod: 120
+  Cooked Salmon: 120
+  Cooked Cod: 100
+  Prismarine Shard: 80
+
+Tip
+Pair with an AFK fishing setup. Nautilus shells are worth 1,500.
+
+How to make
+Pool infusion: drop Tidebloom + Mana Diamond + Cod into a pool holding 6,000 mana (Mana Pool or bigger).
+
+=== Lunabloom T3
+Lunabloom  tier 3
+Makes 40 mana every 2 s, doubled at night (80) and tripled again on a full moon (240 on a full-moon night).
+
+Tip
+Weak by day, strong on full moon nights.
+
+How to make
+Pool infusion: drop Nightshade + Mana Diamond + Quartz into a pool holding 6,000 mana (Mana Pool or bigger).
+
+=== Frostbloom T3
+Frostbloom  tier 3
+Makes 100 mana every 2 s (3,000 a minute) while at least one of these touches one of its six sides: Snow, Snow Layer, Powder Snow, Ice, Packed Ice, Blue Ice. More touching blocks do not add more.
+
+Tip
+Works anywhere you can keep snow or ice beside it. Packed ice never melts.
+
+How to make
+Pool infusion: drop Tidebloom + Mana Diamond + Snowball into a pool holding 6,000 mana (Mana Pool or bigger).
+
+=== Dunebloom T3
+Dunebloom  tier 3
+Makes 100 mana every 2 s (3,000 a minute) while at least one of these touches one of its six sides: Sand, Red Sand, Sandstone, Red Sandstone, Smooth Sandstone. More touching blocks do not add more. Only works during the day.
+
+Tip
+Desert flower: sand beside it, open daytime.
+
+How to make
+Pool infusion: drop Dawnpetal + Mana Diamond + Sand into a pool holding 6,000 mana (Mana Pool or bigger).
+
+=== Galebloom T3
+Galebloom  tier 3
+Makes 110 mana every 2 s (3,300 a minute) at Y=100 or higher with open sky above. Rain or thunder doubles it to 220.
+
+Tip
+Build a sky platform at Y=100 or above. Storms double it.
+
+How to make
+Pool infusion: drop Tidebloom + Mana Diamond + Feather into a pool holding 6,000 mana (Mana Pool or bigger).
+
+=== Deepbloom T3
+Deepbloom  tier 3
+Makes 110 mana every 2 s (3,300 a minute) while at least one of these touches one of its six sides: Deepslate, Cobbled Deepslate, Deepslate Bricks, Polished Deepslate, any Deepslate Ore. More touching blocks do not add more. Only works below Y=0.
+
+Tip
+Plant it in the deepslate layer below Y=0, right next to a deepslate block.
+
+How to make
+Pool infusion: drop Nightshade + Mana Diamond + Deepslate into a pool holding 6,000 mana (Mana Pool or bigger).
+
+=== Echobloom T3
+Echobloom  tier 3
+Makes 120 mana every 2 s (3,600 a minute) while at least one of these touches one of its six sides: Sculk Sensor, Calibrated Sculk Sensor, Sculk Shrieker, Sculk Catalyst. More touching blocks do not add more.
+
+Tip
+Bring a sculk sensor home from the Deep Dark (needs Silk Touch) and plant it beside it.
+
+How to make
+Pool infusion: drop Deepbloom + Mana Diamond + Echo Shard into a pool holding 8,000 mana (Mana Pool or bigger).
+
+=== Emberbloom T3
+Emberbloom  tier 3
+Makes 160 mana every 2 s (4,800 a minute) while at least one of these touches one of its six sides: Lava, Flowing Lava. More touching blocks do not add more. Each cycle there is a 3% chance it drinks one touching lava source, so give it a lava supply you can refill.
+
+Tip
+One of the best early-midgame generators. A lava source next to it gives a constant 80 mana a second.
+
+How to make
+Pool infusion: drop Dawnpetal + Mana Diamond + Blaze Powder into a pool holding 6,000 mana (Mana Pool or bigger).
+
+=== Soulbloom T3
+Soulbloom  tier 3
+Makes 220 mana every time a mob dies within 8 blocks (players do not count). Put it next to a mob farm or the kill spot of a Mana Cannon.
+
+Tip
+A busy mob farm out-earns almost every other flower. The Mana Cannon and Warden Bloom kill mobs for you, so put a Soulbloom in their range.
+
+How to make
+Pool infusion: drop Nightshade + Mana Diamond + Bone into a pool holding 6,000 mana (Mana Pool or bigger).
+
+=== Cinderbloom T3
+Cinderbloom  tier 3
+Every 2 s it burns one flammable block touching it and makes 1,200 mana. It eats: any Planks, any Log, any Wood, any Wool, Hay Block, any Stem, Bookshelf, Coal Block. Feed it with a Logger or keep a stack of planks ready, and keep it away from your house.
+
+Tip
+1,200 mana per burnt block is huge, but it eats a block every 2 seconds. A Logger feeding it logs works well.
+
+How to make
+Pool infusion: drop Emberbloom + Mana Diamond + Coal Block into a pool holding 8,000 mana (Mana Pool or bigger).
+
+=== Stormbloom T3
+Stormbloom  tier 3
+Makes 9,000 mana when lightning strikes within 6 blocks. Place a Lightning Rod right next to it and call storms with a Rune of Air at the Ritual Altar.
+
+Tip
+One lightning strike is 9,000 mana, nearly a full Mana Pool. The Heartwood Warden also calls lightning in its second phase.
+
+How to make
+Pool infusion: drop Galebloom + Mana Diamond + Copper Ingot into a pool holding 8,000 mana (Mana Pool or bigger).
+
+=== Netherbloom T4
+Netherbloom  tier 4
+Makes 300 mana every 2 s (9,000 a minute), but only in the Nether, planted on Soul Sand, Soul Soil, Netherrack, Crimson Nylium, Warped Nylium.
+
+Tip
+The strongest steady flower you can run at home in the Nether. Link it back with a Warp Bloom.
+
+How to make
+Pool infusion: drop Emberbloom + Fae Steel + Nether Wart into a pool holding 20,000 mana (Grand Mana Pool or bigger).
+
+=== Voidbloom T4
+Voidbloom  tier 4
+Makes 500 mana every 2 s (15,000 a minute), but only in the End, planted on End Stone. It must be at least 800 blocks from the center of the End (the outer islands).
+
+Tip
+Endgame: build out on the End's outer islands.
+
+How to make
+Pool infusion: drop Nightshade + Fae Steel + Eye of Ender into a pool holding 20,000 mana (Grand Mana Pool or bigger).
+
+##### Helper Flowers  [Reaper | Collector | Herder | Smelter | Sorter | Logger | Tiller | Miner | Lamp Bloom | Warden Bloom | Mender | Healer | Feeder | Warp Bloom | Seeder | Back]
+Helper flowers do a job every 1 second and pay for it from pools within 8 blocks. If the pools are empty they stop. Sneak-right-click one with the Wand to see its range and cost.
+
+=== Reaper
+Reaper
+Harvests fully grown crops within 5 blocks and replants them, up to 4 a second. The drops fall on the ground, so pair it with a Collector. 8 mana per crop.
+
+How to make
+Pool infusion: drop Harvestbloom + Mana Ingot + Iron Hoe into a pool holding 4,000 mana (Small Mana Pool or bigger).
+
+=== Collector
+Collector
+Needs a chest or barrel right next to it. Every second it picks up dropped items within 6 blocks and puts them into that chest. 2 mana per stack.
+
+How to make
+Pool infusion: drop Dawnpetal + Mana Ingot + Hopper into a pool holding 4,000 mana (Small Mana Pool or bigger).
+
+=== Herder
+Herder
+Pulls animals within 7 blocks toward itself and puts them in love mode so they breed, up to 6 animals a second. 4 mana per animal.
+
+How to make
+Pool infusion: drop Hungerbloom + Mana Ingot + Lead into a pool holding 4,000 mana (Small Mana Pool or bigger).
+
+=== Smelter
+Smelter
+Smelts items dropped on top of it, one per second: raw ores, sand, cobblestone, meat, potatoes, clay, oak logs and fish. 15 mana per item.
+
+How to make
+Pool infusion: drop Coalbloom + Mana Ingot + Furnace into a pool holding 4,000 mana (Small Mana Pool or bigger).
+
+=== Sorter
+Sorter
+Takes dropped items within 4 blocks and puts each one into a chest or barrel within 4 blocks that already holds the same item. Put one of each item in a chest to "teach" it. 2 mana per stack.
+
+How to make
+Pool infusion: drop Dawnpetal + Mana Ingot + Comparator into a pool holding 4,000 mana (Small Mana Pool or bigger).
+
+=== Logger
+Logger
+Finds a normal tree within 6 blocks, cuts the whole tree (up to 64 logs) and replants a sapling if the ground is dirt or grass. 10 mana per tree.
+
+How to make
+Pool infusion: drop Mossbloom + Mana Ingot + Iron Axe into a pool holding 4,000 mana (Small Mana Pool or bigger).
+
+=== Tiller
+Tiller
+Turns dirt and grass within 5 blocks into farmland, then plants seeds, carrots or potatoes from a chest next to it. Up to 3 blocks a second, 6 mana each.
+
+How to make
+Pool infusion: drop Harvestbloom + Mana Ingot + Wheat Seeds into a pool holding 4,000 mana (Small Mana Pool or bigger).
+
+=== Miner
+Miner
+Breaks one ore block within 3 blocks (in every direction) each second and drops it. 30 mana per ore.
+
+How to make
+Pool infusion: drop Deepbloom + Mana Diamond + Iron Pickaxe into a pool holding 8,000 mana (Mana Pool or bigger).
+
+=== Lamp Bloom
+Lamp Bloom
+Stops hostile mobs from spawning within 10 blocks. Costs 1 mana a second.
+
+How to make
+Pool infusion: drop Dawnpetal + Mana Ingot + Glowstone Dust into a pool holding 4,000 mana (Small Mana Pool or bigger).
+
+=== Warden Bloom
+Warden Bloom
+Zaps one hostile mob within 8 blocks each second for 6 damage. 20 mana per zap.
+
+How to make
+Pool infusion: drop Soulbloom + Mana Diamond + Iron Sword into a pool holding 8,000 mana (Mana Pool or bigger).
+
+=== Mender
+Mender
+Repairs 100 durability of a damaged item dropped on top of it each second. 50 mana per repair.
+
+How to make
+Pool infusion: drop Tomebloom + Mana Diamond + Anvil into a pool holding 8,000 mana (Mana Pool or bigger).
+
+=== Healer
+Healer
+Gives Regeneration to players within 5 blocks. 10 mana per player per second.
+
+How to make
+Pool infusion: drop Hungerbloom + Mana Diamond + Golden Apple into a pool holding 8,000 mana (Mana Pool or bigger).
+
+=== Feeder
+Feeder
+Gives Saturation to players within 2 blocks, so you never get hungry while you stand near it. 15 mana per player per second.
+
+How to make
+Pool infusion: drop Hungerbloom + Mana Diamond + Cooked Beef into a pool holding 8,000 mana (Mana Pool or bigger).
+
+=== Warp Bloom
+Warp Bloom
+Teleporter. Right-click one Warp Bloom with the Mana Wand, then right-click a second one to link them (any distance, even across dimensions). Stand on one and sneak to travel to its partner. 100 mana per trip, 4 second cooldown.
+
+How to make
+Pool infusion: drop Voidbloom + Fae Steel + Ender Pearl into a pool holding 8,000 mana (Mana Pool or bigger).
+
+=== Seeder
+Seeder
+Turns bare dirt within 8 blocks into grass, sometimes with a flower on top. Up to 3 blocks a second, 5 mana each.
+
+How to make
+Pool infusion: drop Mossbloom + Mana Diamond + Bone Meal into a pool holding 8,000 mana (Mana Pool or bigger).
+
+##### Pool Infusion  [Materials | Generating flowers | Helper flowers | Back]
+Drop all the items onto one pool. When the pool holds enough mana it uses them up and makes the result. The pool must be able to hold the cost: Small Mana Pool 5,000, Mana Pool 10,000, Grand Mana Pool 100,000. Higher tier recipes also need a lower flower, so keep spares.
+
+=== Materials
+Livingrock  500 mana
+  Stone  (Small Mana Pool+)
+Livingwood Planks  500 mana
+  any Log  (Small Mana Pool+)
+Mana Glass  1,000 mana
+  Glass + Mana Ingot  (Small Mana Pool+)
+Mana Ingot  3,000 mana
+  Iron Ingot  (Small Mana Pool+)
+Mana Diamond  8,000 mana
+  Diamond  (Mana Pool+)
+
+=== Generating flowers
+Hungerbloom  2,000 mana
+  Dawnpetal + Mana Ingot + Wheat  (Small Mana Pool+)
+Nightshade  2,000 mana
+  Tidebloom + Mana Ingot + Spider Eye  (Small Mana Pool+)
+Mossbloom  2,000 mana
+  Tidebloom + Mana Ingot + Moss Block  (Small Mana Pool+)
+Coalbloom  2,000 mana
+  Dawnpetal + Mana Ingot + Coal  (Small Mana Pool+)
+Smithbloom  2,000 mana
+  Dawnpetal + Mana Ingot + Iron Ingot  (Small Mana Pool+)
+Harvestbloom  2,500 mana
+  Dawnpetal + Mana Ingot + Wheat Seeds + Bone Meal  (Small Mana Pool+)
+Emberbloom  6,000 mana
+  Dawnpetal + Mana Diamond + Blaze Powder  (Mana Pool+)
+Soulbloom  6,000 mana
+  Nightshade + Mana Diamond + Bone  (Mana Pool+)
+Frostbloom  6,000 mana
+  Tidebloom + Mana Diamond + Snowball  (Mana Pool+)
+Dunebloom  6,000 mana
+  Dawnpetal + Mana Diamond + Sand  (Mana Pool+)
+Galebloom  6,000 mana
+  Tidebloom + Mana Diamond + Feather  (Mana Pool+)
+Lunabloom  6,000 mana
+  Nightshade + Mana Diamond + Quartz  (Mana Pool+)
+Deepbloom  6,000 mana
+  Nightshade + Mana Diamond + Deepslate  (Mana Pool+)
+Brewbloom  6,000 mana
+  Hungerbloom + Mana Diamond + Glass Bottle  (Mana Pool+)
+Tomebloom  6,000 mana
+  Hungerbloom + Mana Diamond + Book  (Mana Pool+)
+Anglerbloom  6,000 mana
+  Tidebloom + Mana Diamond + Cod  (Mana Pool+)
+Cinderbloom  8,000 mana
+  Emberbloom + Mana Diamond + Coal Block  (Mana Pool+)
+Stormbloom  8,000 mana
+  Galebloom + Mana Diamond + Copper Ingot  (Mana Pool+)
+Echobloom  8,000 mana
+  Deepbloom + Mana Diamond + Echo Shard  (Mana Pool+)
+Netherbloom  20,000 mana
+  Emberbloom + Fae Steel + Nether Wart  (Grand Mana Pool+)
+Voidbloom  20,000 mana
+  Nightshade + Fae Steel + Eye of Ender  (Grand Mana Pool+)
+
+=== Helper flowers
+Reaper  4,000 mana
+  Harvestbloom + Mana Ingot + Iron Hoe  (Small Mana Pool+)
+Collector  4,000 mana
+  Dawnpetal + Mana Ingot + Hopper  (Small Mana Pool+)
+Herder  4,000 mana
+  Hungerbloom + Mana Ingot + Lead  (Small Mana Pool+)
+Smelter  4,000 mana
+  Coalbloom + Mana Ingot + Furnace  (Small Mana Pool+)
+Sorter  4,000 mana
+  Dawnpetal + Mana Ingot + Comparator  (Small Mana Pool+)
+Logger  4,000 mana
+  Mossbloom + Mana Ingot + Iron Axe  (Small Mana Pool+)
+Tiller  4,000 mana
+  Harvestbloom + Mana Ingot + Wheat Seeds  (Small Mana Pool+)
+Lamp Bloom  4,000 mana
+  Dawnpetal + Mana Ingot + Glowstone Dust  (Small Mana Pool+)
+Miner  8,000 mana
+  Deepbloom + Mana Diamond + Iron Pickaxe  (Mana Pool+)
+Warden Bloom  8,000 mana
+  Soulbloom + Mana Diamond + Iron Sword  (Mana Pool+)
+Mender  8,000 mana
+  Tomebloom + Mana Diamond + Anvil  (Mana Pool+)
+Healer  8,000 mana
+  Hungerbloom + Mana Diamond + Golden Apple  (Mana Pool+)
+Feeder  8,000 mana
+  Hungerbloom + Mana Diamond + Cooked Beef  (Mana Pool+)
+Warp Bloom  8,000 mana
+  Voidbloom + Fae Steel + Ender Pearl  (Mana Pool+)
+Seeder  8,000 mana
+  Mossbloom + Mana Diamond + Bone Meal  (Mana Pool+)
+
+##### Rune Altar  [Runes | Alloys and ritual keys | Back]
+Place a Rune Altar within 6 blocks of your pools and drop the ingredients on top. It pays from its own buffer (holds 20,000, fill it with a Spreader) or from all pools within 6 blocks added together, so big recipes can draw from several pools at once.
+
+How to make
+Crafting table: shaped
+   [LLL]
+   [LML]
+   [LLL]
+   L = Livingrock, M = Mana Ingot  (_ = empty)
+
+=== Runes
+Rune of Earth  4,000 mana
+  Mana Ingot + Dirt + Stone
+Rune of Water  4,000 mana
+  Mana Ingot + Kelp + Sand
+Rune of Fire  4,000 mana
+  Mana Ingot + Blaze Powder + Coal
+Rune of Air  4,000 mana
+  Mana Ingot + Feather + String
+Rune of Spring  8,000 mana
+  Rune of Water + Rune of Earth + Wheat Seeds + Mana Ingot
+Rune of Summer  8,000 mana
+  Rune of Fire + Rune of Earth + Sunflower + Mana Ingot
+Rune of Autumn  8,000 mana
+  Rune of Fire + Rune of Air + Pumpkin + Mana Ingot
+Rune of Winter  8,000 mana
+  Rune of Water + Rune of Air + Snow Block + Mana Ingot
+Rune of Pride  16,000 mana
+  Rune of Fire + Gold Block + Mana Ingot
+Rune of Greed  16,000 mana
+  Rune of Earth + Emerald Block + Mana Ingot
+Rune of Lust  16,000 mana
+  Rune of Summer + Honey Bottle + Mana Ingot
+Rune of Envy  16,000 mana
+  Rune of Air + Eye of Ender + Mana Ingot
+Rune of Gluttony  16,000 mana
+  Rune of Earth + Golden Apple + Mana Ingot
+Rune of Wrath  16,000 mana
+  Rune of Fire + TNT + Mana Ingot
+Rune of Sloth  16,000 mana
+  Rune of Water + Soul Sand + Mana Ingot
+
+=== Alloys and ritual keys
+Verdant Alloy  12,000 mana
+  Mana Ingot + Diamond + Rune of Earth + Rune of Air
+Fae Steel  30,000 mana
+  Verdant Alloy + Netherite Scrap + Rune of Spring + Rune of Summer
+Thorn Seed  10,000 mana
+  Rune of Earth + Rune of Spring + Vine + Sweet Berries
+Crystal Idol  12,000 mana
+  3x Mana Crystal + Rune of Water + Mana Diamond
+Warden Sigil  60,000 mana
+  Fae Steel + Mana Diamond + Rune of Pride + Rune of Greed + Rune of Lust + Rune of Envy + Rune of Gluttony + Rune of Wrath + Rune of Sloth
+
+##### Mana Enchanter
+How it works
+Drop one rune and one tool, weapon, book or armor piece onto the Mana Enchanter. It adds the first enchantment from that rune's list that the item can take and doesn't already have, uses up the rune and costs 2,000 mana. Drop the same kind of rune again to get the next one on the list.
+
+What each rune gives
+Rune of Earth
+  Unbreaking III, Protection III, Efficiency III
+Rune of Fire
+  Fire Aspect II, Flame I, Fire Protection III
+Rune of Water
+  Respiration II, Depth Strider II, Aqua Affinity I
+Rune of Air
+  Feather Falling III, Knockback II, Power III
+Rune of Spring
+  Mending I
+Rune of Summer
+  Sharpness III, Fortune II, Looting II
+Rune of Winter
+  Frost Walker I, Silk Touch I
+Rune of Autumn
+  Efficiency IV, Thorns II
+
+How to make
+Crafting table: shapeless: Enchanting Table + Mana Diamond + Livingrock
+
+##### Rituals
+Setting up
+Place the Ritual Altar with at least 4 pools within 6 blocks of it. Hold a ritual key and right-click the altar. The mana comes out of all those pools together, and the key is used up.
+
+Big rituals need more mana than 4 small pools hold. Use a Grand Mana Pool as one of the four, or link extra pools with Sparks.
+
+Rituals
+Warden Sigil  100,000 mana
+  Summons the Heartwood Warden
+Thorn Seed  20,000 mana
+  Summons the Thornmother
+Crystal Idol  10,000 mana
+  Summons the Crystal Sentinel
+Rune of Summer  8,000 mana
+  Brings a clear day
+Rune of Winter  8,000 mana
+  Brings rain
+Rune of Air  8,000 mana
+  Brings a storm
+Rune of Spring  10,000 mana
+  Brings spring growth
+
+Bosses appear 4 blocks south of the altar about 5 seconds after the ritual. Clear the area first.
+
+How to make
+Crafting table: shapeless: Rune Altar + Mana Diamond + Rune of Earth + Rune of Water + Rune of Fire + Rune of Air
+
+##### Bosses  [Crystal Sentinel | Thornmother | Heartwood Warden | Back]
+Three bosses, summoned at the Ritual Altar. Each one drops what you need for the next. Fight them in this order.
+
+=== Crystal Sentinel
+Crystal Sentinel
+Health: 300   Melee: 8
+
+Summoning
+Use a Crystal Idol at the Ritual Altar (10,000 mana).
+Rune Altar: 3x Mana Crystal + Rune of Water + Mana Diamond, 12,000 mana.
+
+The fight
+- Every 5 seconds it fires crystal shards at every player within 16 blocks (6 damage each).
+- At two thirds and one third health it raises 3 amethyst crystals around itself and becomes nearly immune to damage. Break all three crystals, then keep attacking.
+
+Strategy
+Bring a pickaxe for the crystals and a few golden apples. Fight it in the open so the crystals spawn where you can reach them.
+
+Drops
+  4-8x Mana Crystal
+  1x Rune of Water
+
+=== Thornmother
+Thornmother
+Health: 600   Melee: 10
+
+Summoning
+Use a Thorn Seed at the Ritual Altar (20,000 mana).
+Rune Altar: Rune of Earth + Rune of Spring + Vine + Sweet Berries, 10,000 mana.
+
+The fight
+- Every 6 seconds roots burst out under players within 12 blocks: 4 damage and Slowness III.
+- Every 7 seconds she calls silverfish (up to 6 at a time).
+- She is weak to fire: every fire or lava hit deals 8 extra damage, and while she burns she takes 6 more damage twice a second.
+
+Strategy
+Put Fire Aspect on your sword (Rune of Fire at the Mana Enchanter) or Flame on a bow, or lead her into lava. Stay out of the 12 block root range when you can.
+
+Drops
+  1-3x Verdant Alloy
+  1x Thorn Seed
+  1-2x Rune of Earth
+
+=== Heartwood Warden
+Heartwood Warden
+Health: 1,500   Melee: 16
+
+Summoning
+Use a Warden Sigil at the Ritual Altar (100,000 mana).
+Rune Altar: Fae Steel + Mana Diamond + Rune of Pride + Rune of Greed + Rune of Lust + Rune of Envy + Rune of Gluttony + Rune of Wrath + Rune of Sloth, 60,000 mana.
+
+The fight
+- Phase 1 (full to two thirds health): every 6 seconds it slams the ground, 10 damage and a big knockback to anyone within 6 blocks.
+- Phase 2 (two thirds to one third): every 4 seconds lightning strikes beside each player within 24 blocks.
+- Phase 3 (below one third): every 5 seconds it dashes up to 6 blocks at you, and it calls Warden Echoes (husks, up to 4).
+
+Strategy
+Fight at range in phase 1 (Verdant Bow), wear a Lava Ring in phase 2 so the fires don't hurt, and save your Terra Blade for phase 3. A Stormbloom near the arena turns phase 2 into free mana.
+
+Drops
+  4-8x Heartwood
+  1-2x Fae Steel
+  2-4x Mana Diamond
+
+##### Machines & Blocks  [Mana Furnace | Mana Cannon | Mana Elevator | Mana Brewery | Mana Enchanter | Mana Gauge | Sacrificial Altar | Wind Vane | Livingwood Log | Crystal Heart | Mana Lamp | Mana Glass | Livingrock Bricks | Hourglass | Back]
+Machines take mana from their own buffer or from pools within 6 blocks.
+
+=== Mana Furnace
+Mana Furnace
+Smelts items dropped on top, one each second, for 20 mana each: ores, raw metal, sand, cobblestone, stone, clay, netherrack, kelp, logs, meat and fish, and even Ancient Debris.
+
+How to make
+Crafting table: shapeless: Furnace + Mana Ingot + Livingrock
+
+=== Mana Cannon
+Mana Cannon
+Shoots the nearest hostile mob within 16 blocks once a second for 8 damage. 30 mana a shot.
+
+How to make
+Crafting table: shapeless: Dispenser + Mana Diamond + Livingrock
+
+=== Mana Elevator
+Mana Elevator
+Place elevators in a straight column (up to 64 blocks apart). Stand on one and jump to go up, sneak to go down. 20 mana a trip.
+
+How to make
+Crafting table: shapeless (makes 2): Livingrock + Mana Ingot + Ender Pearl
+
+=== Mana Brewery
+Mana Brewery
+Drop a Glass Bottle and the ingredients on top to brew a flask. Flasks are drunk like potions and give you the bottle back.
+
+Night Vision Flask  1,500 mana
+  Glass Bottle + Nightshade + Golden Carrot
+  Night Vision for 10 min
+Leaping Flask  1,500 mana
+  Glass Bottle + Dawnpetal + Rabbit Foot
+  Jump Boost III for 5 min
+Water Breathing Flask  1,500 mana
+  Glass Bottle + Tidebloom + Pufferfish
+  Water Breathing for 10 min
+Feather Fall Flask  1,500 mana
+  Glass Bottle + Galebloom + Feather
+  Slow Falling for 5 min
+
+How to make
+Crafting table: shapeless: Brewing Stand + Mana Ingot + Livingrock
+
+=== Mana Enchanter
+Mana Enchanter
+See the Mana Enchanter chapter.
+
+How to make
+Crafting table: shapeless: Enchanting Table + Mana Diamond + Livingrock
+
+=== Mana Gauge
+Mana Gauge
+Shows how full the fullest pool within 2 blocks is, as a column of 0 to 6 sparkles.
+
+How to make
+Crafting table: shapeless: Mana Relay + Redstone + Comparator
+
+=== Sacrificial Altar
+Sacrificial Altar
+Burns anything dropped on it for mana: rotten flesh 40 each, seeds 15, any other item 25. Cows, pigs, chickens, sheep, rabbits and mooshrooms standing on it are sacrificed for 400. Careful: it eats every item, including ones you drop by accident.
+
+How to make
+Crafting table: shapeless: Rune Altar + Bone + Rotten Flesh
+
+=== Wind Vane
+Wind Vane
+Makes mana every second from the wind with open sky: 1 per 3 blocks above Y=60, up to 80 a second at Y=300. Rain doubles it.
+
+How to make
+Crafting table: shaped
+   [FFF]
+   [_M_]
+   [_S_]
+   F = Feather, M = Mana Ingot, S = Stick  (_ = empty)
+
+=== Livingwood Log
+Livingwood Log
+Plant a Living Sapling on dirt or grass with 6 empty blocks above. It grows within a minute or so into a Livingwood tree. Every trunk log next to leaves or another trunk log makes 8 mana every 2 seconds, so a full tree makes about 40 every 2 seconds.
+
+How to make
+Crafting table: shapeless: Oak Sapling + Mana Ingot + Bone Meal
+
+=== Crystal Heart
+Crystal Heart
+Makes 12 mana every 2 seconds, forever, with no upkeep.
+
+How to make
+Crafting table: shaped
+   [CCC]
+   [CDC]
+   [CCC]
+   C = Mana Crystal, D = Mana Diamond  (_ = empty)
+
+=== Mana Lamp
+Mana Lamp
+A full brightness light block.
+
+How to make
+Crafting table: shapeless: Glowstone + Mana Ingot
+
+=== Mana Glass
+Mana Glass
+A softly glowing glass block.
+
+How to make
+Pool infusion: drop Glass + Mana Ingot into a pool holding 1,000 mana (Small Mana Pool or bigger).
+
+=== Livingrock Bricks
+Livingrock Bricks
+Decorative building block.
+
+How to make
+Crafting table: shaped (makes 4)
+   [LL]
+   [LL]
+   L = Livingrock  (_ = empty)
+
+=== Hourglass
+Hourglass
+Right-click any Wildbloom block to make it run 10 cycles at once: a flower makes 10 cycles of mana, a pool crafts, a machine works. 2 second cooldown.
+
+How to make
+Crafting table: shaped
+   [GGG]
+   [_M_]
+   [GGG]
+   G = Gold Ingot, M = Mana Ingot  (_ = empty)
+
+##### Tools & Weapons  [Livingwood tools | Mana tools | Verdant tools | Heartwood tools | Special weapons & tools | Back]
+Mana tools need charge for their abilities. Drop them on a pool to charge and repair them.
+
+=== Livingwood tools
+Basic tools from Livingwood Planks. No mana abilities.
+
+Livingwood Axe  5 dmg, 140 uses
+Livingwood Pickaxe  2 dmg, 140 uses
+Livingwood Shovel  2 dmg, 140 uses
+Livingwood Sword  4 dmg, 140 uses
+
+Shaped like vanilla tools, using the tier's material and sticks.
+
+=== Mana tools
+Made from Mana Ingots. The first tools with mana abilities.
+
+Mana Axe  7 dmg, 500 uses, 20,000 charge
+  While charged, chopping a log fells the whole tree, up to 64 logs (8 charge each). Gives Haste II.
+Mana Pickaxe  4 dmg, 500 uses, 20,000 charge
+  While charged, mines a 3x3 area facing you (10 charge per extra block). Sneak to mine one block. Gives Haste II.
+Mana Shovel  4 dmg, 500 uses, 20,000 charge
+  While charged, gives Haste II.
+Mana Sword  6 dmg, 500 uses, 20,000 charge
+  While charged, each hit deals 3 extra magic damage for 40 charge.
+
+Shaped like vanilla tools, using the tier's material and sticks.
+
+=== Verdant tools
+Made from Verdant Alloy.
+
+Verdant Axe  9 dmg, 1,200 uses, 50,000 charge
+  While charged, chopping a log fells the whole tree, up to 64 logs (8 charge each). Gives Haste II.
+Verdant Pickaxe  5 dmg, 1,200 uses, 50,000 charge
+  While charged, mining an ore vein-mines up to 16 more of the same ore (20 charge each). Other blocks mine 3x3 (sneak for one). Gives Haste II.
+Verdant Sword  8 dmg, 1,200 uses, 50,000 charge
+  While charged, each hit deals 4 extra magic damage for 40 charge.
+
+Shaped like vanilla tools, using the tier's material and sticks.
+
+=== Heartwood tools
+Made from Heartwood (Heartwood Warden drop). The strongest set.
+
+Heartwood Axe  11 dmg, 2,400 uses, 100,000 charge
+  While charged, chopping a log fells the whole tree, up to 64 logs (8 charge each). Gives Haste II.
+Heartwood Pickaxe  8 dmg, 2,400 uses, 100,000 charge
+  While charged, mines a 3x3 area facing you (10 charge per extra block). Sneak to mine one block. Gives Haste II.
+Heartwood Shovel  8 dmg, 2,400 uses, 100,000 charge
+  While charged, gives Haste II.
+Heartwood Sword  10 dmg, 2,400 uses, 100,000 charge
+  While charged, each hit deals 6 extra magic damage for 40 charge.
+
+Shaped like vanilla tools, using the tier's material and sticks.
+
+=== Special weapons & tools
+Terra Blade  11 dmg, 100,000 charge
+  Right-click at full health to fire a beam 14 blocks long that deals 12 damage to everything in it. 200 charge.
+  Crafting table: shaped
+   [F]
+   [V]
+   [S]
+   F = Fae Steel, S = Stick, V = Verdant Alloy  (_ = empty)
+
+Gale Glaive  9 dmg, 100,000 charge
+  Right-click to dash forward, dealing 9 damage to everything in your path. 300 charge, 2 second cooldown.
+  Crafting table: shaped
+   [_FF]
+   [_SF]
+   [S__]
+   F = Fae Steel, S = Stick  (_ = empty)
+
+Verdant Bow  50,000 charge
+  Right-click while looking toward a hostile mob within 24 blocks to strike it with a mana bolt for 9 damage. 150 charge, no arrows needed.
+  Crafting table: shaped
+   [AS_]
+   [A_S]
+   [AS_]
+   A = Verdant Alloy, S = String  (_ = empty)
+
+Fae Shovel  4 dmg, 100,000 charge
+  Hold seeds, carrots or potatoes in your off hand and right-click the top of the ground: it tills and plants a 5x5 area. 4 charge per crop.
+  Crafting table: shaped
+   [F]
+   [S]
+   [S]
+   F = Fae Steel, S = Stick  (_ = empty)
+
+Terraformer Wand  50,000 charge
+  Hold a block in your off hand and right-click a surface: the 5x5 square on that face turns into that block. 5 charge per block.
+  Crafting table: shaped
+   [_VD]
+   [_SV]
+   [S__]
+   D = Mana Diamond, S = Stick, V = Verdant Alloy  (_ = empty)
+
+##### Armor
+Wear all four pieces of one set for its bonus. Armor is crafted like vanilla armor from the set's material.
+
+Livingwood armor  7 armor points total
+  Full set bonus: Slowly charges the mana gear in your main hand (20 a second).
+
+Mana armor  15 armor points total
+  Full set bonus: Pulls dropped items within 5 blocks to you.
+
+Verdant armor  20 armor points total
+  Full set bonus: Night Vision and Slow Falling.
+
+Heartwood armor  24 armor points total
+  Full set bonus: Water Breathing, Absorption II and Speed.
+
+##### Trinkets & Items  [Mana Wand | Magnet Ring | Haste Ring | Water Ring | Lava Ring | Jump Ring | Mana Band | Mana Battery | Mana Tablet | Mana Mirror | Cloud Pendant | Hourglass | Mana Spark | Back]
+Rings work while held in your off hand.
+
+=== Mana Wand
+Mana Wand
+Right-click a spreader, relay, prism, gate, sun mirror or machine to turn it. Sneak-right-click anything to read its mana, range or output. Also links Warp Blooms.
+
+How to make
+Crafting table: shaped
+   [__D]
+   [_S_]
+   [S__]
+   D = Dawnpetal, S = Stick  (_ = empty)
+
+=== Magnet Ring
+Magnet Ring
+Off hand: pulls dropped items within 8 blocks to you.
+
+How to make
+Crafting table: shapeless: Mana Ingot + Iron Ingot + Redstone
+
+=== Haste Ring
+Haste Ring
+Off hand: Haste I.
+
+How to make
+Crafting table: shapeless: Mana Ingot + Gold Ingot + Sugar
+
+=== Water Ring
+Water Ring
+Off hand: Water Breathing and Dolphin's Grace.
+
+How to make
+Crafting table: shapeless: Mana Ingot + Prismarine Crystals + Heart of the Sea
+
+=== Lava Ring
+Lava Ring
+Off hand: Fire Resistance.
+
+How to make
+Crafting table: shapeless: Mana Diamond + Magma Cream + Blaze Rod
+
+=== Jump Ring
+Jump Ring
+Off hand: Jump Boost II.
+
+How to make
+Crafting table: shapeless: Mana Ingot + Slime Ball + Rabbit Foot
+
+=== Mana Band
+Mana Band
+Off hand: stores 200,000 mana and feeds it into the mana gear in your main hand. Charge it on a pool.
+
+How to make
+Crafting table: shapeless: Mana Diamond + Mana Ingot + Gold Ingot
+
+=== Mana Battery
+Mana Battery
+Holds 10,000. Right-click a pool to empty it into the pool, sneak-right-click to fill it. Carry mana to a pool far from your flowers.
+
+How to make
+Crafting table: shapeless: Mana Ingot + Redstone + Iron Ingot
+
+=== Mana Tablet
+Mana Tablet
+A bigger battery: holds 50,000.
+
+How to make
+Crafting table: shaped
+   [MBM]
+   [BDB]
+   [MBM]
+   B = Mana Battery, D = Mana Diamond, M = Mana Ingot  (_ = empty)
+
+=== Mana Mirror
+Mana Mirror
+Right-click a pool to bind it. Then use the mirror anywhere within 64 blocks to charge the mana gear in your off hand from that pool (2,000 per use).
+
+How to make
+Crafting table: shaped
+   [MMM]
+   [MDM]
+   [_S_]
+   D = Glass, M = Mana Ingot, S = Stick  (_ = empty)
+
+=== Cloud Pendant
+Cloud Pendant
+Right-click in mid-air to make a cloud block under your feet for 5 seconds. Saves you from falls and helps you bridge.
+
+How to make
+Crafting table: shapeless: String + Mana Ingot + White Wool
+
+=== Hourglass
+Hourglass
+Right-click a Wildbloom block to run 10 of its cycles at once. 2 second cooldown.
+
+How to make
+Crafting table: shaped
+   [GGG]
+   [_M_]
+   [GGG]
+   G = Gold Ingot, M = Mana Ingot  (_ = empty)
+
+=== Mana Spark
+Mana Spark
+Attach to pools so they share mana within 12 blocks. See Moving Mana.
+
+How to make
+Crafting table: shapeless: Mana Ingot + Blaze Powder
+
+##### Crafting Recipes  [Pools & mana network | Flowers & growing | Altars & machines | Gear & trinkets | Back]
+Crafting table recipes. Rows read top to bottom; _ is an empty slot. Armor and basic tools use vanilla shapes.
+
+=== Pools & mana network
+Small Mana Pool
+  shaped
+   [S_S]
+   [SDS]
+   [SSS]
+   D = Dawnpetal, S = Stone  (_ = empty)
+
+Mana Pool
+  shaped
+   [R_R]
+   [RPR]
+   [RRR]
+   P = Small Mana Pool, R = Livingrock  (_ = empty)
+
+Grand Mana Pool
+  shaped
+   [DRD]
+   [RPR]
+   [DRD]
+   D = Mana Diamond, P = Mana Pool, R = Livingrock  (_ = empty)
+
+Overflow Mana Pool
+  shapeless: Mana Pool + Mana Ingot + Hopper
+
+Mana Spreader
+  shaped
+   [WWW]
+   [D__]
+   [WWW]
+   D = Dawnpetal, W = Livingwood Planks  (_ = empty)
+
+Mana Relay
+  shapeless: Mana Spreader + Mana Ingot
+
+Mana Prism
+  shapeless: Mana Relay + Glass + Mana Ingot
+
+Mana Gate
+  shapeless: Mana Relay + Redstone + Mana Ingot
+
+Mana Gauge
+  shapeless: Mana Relay + Redstone + Comparator
+
+Sun Mirror
+  shaped
+   [GGG]
+   [GMG]
+   [GGG]
+   G = Glass, M = Mana Ingot  (_ = empty)
+
+Mana Spark
+  shapeless: Mana Ingot + Blaze Powder
+
+=== Flowers & growing
+Dawnpetal
+  shapeless: Dandelion + Bone Meal
+
+Tidebloom
+  shapeless: Blue Orchid + Bone Meal
+
+Living Sapling
+  shapeless: Oak Sapling + Mana Ingot + Bone Meal
+
+Livingwood Log
+  shapeless: Oak Log + Mana Ingot + Bone Meal
+
+Lexicon Wildbloom
+  shapeless: Book + Oak Sapling
+
+Mana Wand
+  shaped
+   [__D]
+   [_S_]
+   [S__]
+   D = Dawnpetal, S = Stick  (_ = empty)
+
+=== Altars & machines
+Rune Altar
+  shaped
+   [LLL]
+   [LML]
+   [LLL]
+   L = Livingrock, M = Mana Ingot  (_ = empty)
+
+Ritual Altar
+  shapeless: Rune Altar + Mana Diamond + Rune of Earth + Rune of Water + Rune of Fire + Rune of Air
+
+Sacrificial Altar
+  shapeless: Rune Altar + Bone + Rotten Flesh
+
+Mana Furnace
+  shapeless: Furnace + Mana Ingot + Livingrock
+
+Mana Cannon
+  shapeless: Dispenser + Mana Diamond + Livingrock
+
+Mana Elevator
+  shapeless (makes 2): Livingrock + Mana Ingot + Ender Pearl
+
+Mana Enchanter
+  shapeless: Enchanting Table + Mana Diamond + Livingrock
+
+Mana Brewery
+  shapeless: Brewing Stand + Mana Ingot + Livingrock
+
+Wind Vane
+  shaped
+   [FFF]
+   [_M_]
+   [_S_]
+   F = Feather, M = Mana Ingot, S = Stick  (_ = empty)
+
+Crystal Heart
+  shaped
+   [CCC]
+   [CDC]
+   [CCC]
+   C = Mana Crystal, D = Mana Diamond  (_ = empty)
+
+Mana Lamp
+  shapeless: Glowstone + Mana Ingot
+
+Livingrock Bricks
+  shaped (makes 4)
+   [LL]
+   [LL]
+   L = Livingrock  (_ = empty)
+
+=== Gear & trinkets
+Cloud Pendant
+  shapeless: String + Mana Ingot + White Wool
+
+Gale Glaive
+  shaped
+   [_FF]
+   [_SF]
+   [S__]
+   F = Fae Steel, S = Stick  (_ = empty)
+
+Haste Ring
+  shapeless: Mana Ingot + Gold Ingot + Sugar
+
+Hourglass
+  shaped
+   [GGG]
+   [_M_]
+   [GGG]
+   G = Gold Ingot, M = Mana Ingot  (_ = empty)
+
+Jump Ring
+  shapeless: Mana Ingot + Slime Ball + Rabbit Foot
+
+Lava Ring
+  shapeless: Mana Diamond + Magma Cream + Blaze Rod
+
+Bounce Lens
+  shapeless: Glass Pane + Slime Ball + Mana Ingot
+
+Pool Filter Lens
+  shapeless: Glass Pane + Lapis Lazuli + Mana Ingot
+
+Piercing Lens
+  shapeless: Glass Pane + Arrow + Mana Ingot
+
+Velocity Lens
+  shapeless: Glass Pane + Sugar + Mana Ingot
+
+Weight Lens
+  shapeless: Glass Pane + Iron Block + Mana Ingot
+
+Magnet Ring
+  shapeless: Mana Ingot + Iron Ingot + Redstone
+
+Mana Band
+  shapeless: Mana Diamond + Mana Ingot + Gold Ingot
+
+Mana Battery
+  shapeless: Mana Ingot + Redstone + Iron Ingot
+
+Mana Mirror
+  shaped
+   [MMM]
+   [MDM]
+   [_S_]
+   D = Glass, M = Mana Ingot, S = Stick  (_ = empty)
+
+Mana Tablet
+  shaped
+   [MBM]
+   [BDB]
+   [MBM]
+   B = Mana Battery, D = Mana Diamond, M = Mana Ingot  (_ = empty)
+
+Terra Blade
+  shaped
+   [F]
+   [V]
+   [S]
+   F = Fae Steel, S = Stick, V = Verdant Alloy  (_ = empty)
+
+Terraformer Wand
+  shaped
+   [_VD]
+   [_SV]
+   [S__]
+   D = Mana Diamond, S = Stick, V = Verdant Alloy  (_ = empty)
+
+Verdant Bow
+  shaped
+   [AS_]
+   [A_S]
+   [AS_]
+   A = Verdant Alloy, S = String  (_ = empty)
+
+Water Ring
+  shapeless: Mana Ingot + Prismarine Crystals + Heart of the Sea
+
+##### Exploring
+Wild flowers
+Dawnpetals grow on grass in plains and forests. Tideblooms grow on grass by rivers, in swamps and in forests.
+
+Mana Crystal Ore
+Found in stone and deepslate between Y=0 and Y=-60. Drops 1-3 Mana Crystals. Crystals make the Crystal Idol and the Crystal Heart.
+
+Wild Gardens
+A Small Mana Pool (with a little mana in it) ringed by flowers, with a chest of Dawnpetals and Tideblooms, and sometimes a Mana Ingot, a Mana Wand or a Lexicon. A free start if you find one.
+
+Overgrown Shrines
+Livingrock ruins guarded by a zombie or skeleton. The chest holds an elemental rune, 2-4 Mana Crystals, a tier 2 flower, Mana Ingots, and sometimes a Thorn Seed.
+
+Gardens and shrines appear on open ground around you as you explore new land.
+
+##### Help & FAQ
+My pool won't craft
+Drop all the items close together on top of the pool. If the pool smokes, it needs more mana; the message shows how much. If it says the pool is too small, use a bigger pool (Mana Diamond needs a Mana Pool).
+
+My flower smokes
+No pool within 6 blocks has room. Add a pool or empty one.
+
+My flower does nothing
+Sneak-right-click it with the Wand to see what it needs, and check its page in Generating Flowers.
+
+My spreader doesn't send mana
+It must touch a pool that has mana, face the target (turn it with the Wand) and have a clear line under 24 blocks. Solid blocks in the way stop the pulse.
+
+Machines stop
+They need mana in their buffer or in pools within 6 blocks (8 for helper flowers).
+
+I lost my Lexicon
+Craft a new one: Book + Oak Sapling.
+
+Is my pack up to date?
+When you join a world, chat shows "Wildbloom vX loaded". If it's an old number, Minecraft is using a cached copy: remove the old pack and import the new one.

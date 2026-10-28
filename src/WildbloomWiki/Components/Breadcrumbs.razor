@@ -1,0 +1,21 @@
+<nav class="crumbs" aria-label="Breadcrumb">
+    <a href="">Wildbloom</a>
+    @if (Current != "Wildbloom Wiki")
+    {
+        <span class="sep">›</span>
+        <a href="">Wiki</a>
+    }
+    @if (Parent is not null)
+    {
+        <span class="sep">›</span>
+        <a href="@ParentHref">@Parent</a>
+    }
+    <span class="sep">›</span>
+    <span class="current">@Current</span>
+</nav>
+
+@code {
+    [Parameter] public string? Parent { get; set; }
+    [Parameter] public string? ParentHref { get; set; }
+    [Parameter, EditorRequired] public string Current { get; set; } = "";
+}

@@ -1,0 +1,86 @@
+@inject WikiService Wiki
+
+<div class="recipe">
+    <div class="recipe-head">
+        <span class="recipe-station">@Recipe.StationLabel</span>
+        @if (Recipe.Cost > 0)
+        {
+            <span class="mana-badge">@Recipe.Cost.ToString("N0") mana</span>
+        }
+        @if (Recipe.Type == "pool" && Recipe.Station is not null)
+        {
+            <span class="recipe-note">@Wiki.Name(Recipe.Station) or bigger</span>
+        }
+        @if (Recipe.Type == "crafting" && Recipe.Pattern is null)
+        {
+            <span class="recipe-note">Shapeless</span>
+        }
+    </div>
+    <div class="recipe-body">
+        @if (Recipe.Type == "crafting")
+        {
+            <div class="craft-grid">
+                @for (var row = 0; row < 3; row++)
+                {
+                    @for (var col = 0; col < 3; col++)
+                    {
+                        <Slot Id="@Cell(row, col)" />
+                    }
+                }
+            </div>
+        }
+        else
+        {
+            <div class="infuse-inputs">
+                @foreach (var group in Recipe.Ingredients.GroupBy(i => i))
+                {
+                    <Slot Id="@group.Key" Count="@group.Count()" />
+                }
+            </div>
+            <div class="infuse-station">
+                <Slot Id="@(Recipe.Station ?? "")" />
+            </div>
+        }
+        <div class="recipe-arrow">➜</div>
+        <Slot Id="@Recipe.Output" Count="@Recipe.Count" Large="true" />
+    </div>
+    @if (ShowNames)
+    {
+        <div class="recipe-names">
+            <ItemChip Id="@Recipe.Output" Prefix="@(Recipe.Count > 1 ? $"{Recipe.Count}× " : null)" />
+            <span class="recipe-from">from</span>
+            @foreach (var group in Recipe.Ingredients.GroupBy(i => i))
+            {
+                <ItemChip Id="@group.Key" Prefix="@(Count(group.Key) > 1 ? $"{Count(group.Key)}× " : null)" />
+            }
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired] public Recipe Recipe { get; set; } = default!;
+    [Parameter] public bool ShowNames { get; set; } = true;
+
+    // Shaped recipes come as a pattern + key; shapeless ones fill the grid in order.
+    string? Cell(int row, int col)
+    {
+        if (Recipe.Pattern is { } pattern)
+        {
+            if (row >= pattern.Count || col >= pattern[row].Length) return null;
+            var c = pattern[row][col].ToString();
+            return Recipe.Key is not null && Recipe.Key.TryGetValue(c, out var id) ? id : null;
+        }
+        var i = row * 3 + col;
+        return i < Recipe.Ingredients.Count ? Recipe.Ingredients[i] : null;
+    }
+
+    int Count(string id)
+    {
+        if (Recipe.Pattern is { } pattern && Recipe.Key is not null)
+        {
+            var key = Recipe.Key.FirstOrDefault(k => k.Value == id).Key;
+            return key is null ? 1 : pattern.Sum(r => r.Count(ch => ch.ToString() == key));
+        }
+        return Recipe.Ingredients.Count(i => i == id);
+    }
+}

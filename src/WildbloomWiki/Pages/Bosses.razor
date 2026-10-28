@@ -1,0 +1,63 @@
+@page "/bosses"
+@inject WikiService Wiki
+
+<PageTitle>Bosses · Wildbloom Wiki</PageTitle>
+
+<Breadcrumbs Current="Bosses" />
+
+<h1>Bosses</h1>
+<p class="lead">
+    Three bosses, summoned with a ritual key at the <a href="item/ritual_altar">Ritual Altar</a> while 4 or more pools
+    sit within 6 blocks. Each one drops what you need for the next, so fight them in order.
+</p>
+
+@foreach (var b in Wiki.Data.Bosses.OrderBy(b => b.Order))
+{
+    <section class="boss" id="@b.Slug">
+        <div class="boss-art">
+            <img src="@b.Image" alt="@b.Name" />
+            <span class="boss-order">Boss @b.Order</span>
+        </div>
+        <div class="boss-body">
+            <h2><a href="@($"bosses#{b.Slug}")">@b.Name</a></h2>
+            <div class="boss-stats">
+                <div><span class="stat-num">@b.Health.ToString("N0")</span><span class="stat-label">Health</span></div>
+                <div><span class="stat-num">@b.Melee</span><span class="stat-label">Melee</span></div>
+                @if (Wiki.Item(b.Key) is { } key)
+                {
+                    <div class="boss-key"><ItemChip Id="@key.Id" /><span class="stat-label">Ritual key</span></div>
+                }
+            </div>
+
+            <h3>Summoning</h3>
+            <ul class="g-list">
+                @foreach (var s in b.Summon)
+                {
+                    <li>@((MarkupString)Wiki.Linkify(s))</li>
+                }
+            </ul>
+
+            <h3>The fight</h3>
+            <ul class="g-list">
+                @foreach (var f in b.Fight)
+                {
+                    <li>@((MarkupString)Wiki.Linkify(f))</li>
+                }
+            </ul>
+
+            <h3>Strategy</h3>
+            <p>@((MarkupString)Wiki.Linkify(b.Strategy))</p>
+
+            <h3>Drops</h3>
+            <div class="drops">
+                @foreach (var d in b.Drops)
+                {
+                    <div class="drop">
+                        <Slot Id="@d.Id" />
+                        <span>@d.Count× @d.Name</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

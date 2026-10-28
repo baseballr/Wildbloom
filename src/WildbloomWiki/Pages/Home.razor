@@ -1,0 +1,112 @@
+@page "/"
+@inject WikiService Wiki
+
+<PageTitle>Wildbloom Wiki</PageTitle>
+
+<Breadcrumbs Current="Wildbloom Wiki" />
+
+<section class="hero">
+    <div class="hero-text">
+        <div class="eyebrow">Minecraft Bedrock add-on · v@(Data.Version)</div>
+        <h1>Wildbloom Wiki</h1>
+        <p class="lead">
+            Wildbloom is magic made from flowers. Flowers make mana, pools store it, and you spend it to infuse items,
+            power machines, charge gear and summon three bosses. This wiki covers every item, recipe and system in the add-on.
+        </p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="guide/getting-started">Start playing</a>
+            <a class="btn" href="items">Browse items</a>
+        </div>
+    </div>
+    <div class="hero-art">
+        <div class="hero-garden">
+            @foreach (var f in Data.Flowers.OrderBy(f => f.Tier).Take(12))
+            {
+                var item = Wiki.Item(f.Id);
+                if (item?.Icon is not null)
+                {
+                    <a href="@WikiService.ItemHref(item)" title="@item.Name"><img src="@item.Icon" alt="@item.Name" class="pixel" /></a>
+                }
+            }
+        </div>
+        <div class="hero-blocks">
+            @foreach (var id in new[] { "wb:mana_pool_small", "wb:mana_spreader", "wb:mana_pool", "wb:rune_altar", "wb:mana_pool_grand" })
+            {
+                var item = Wiki.Item(id);
+                if (item?.Icon is not null)
+                {
+                    <a href="@WikiService.ItemHref(item)" title="@item.Name"><img src="@item.Icon" alt="@item.Name" /></a>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<div class="stats">
+    <div class="stat"><span class="stat-num">@Data.Items.Count(i => !i.IsBlock)</span><span class="stat-label">Items</span></div>
+    <div class="stat"><span class="stat-num">@Data.Items.Count(i => i.IsBlock)</span><span class="stat-label">Blocks</span></div>
+    <div class="stat"><span class="stat-num">@(Data.Flowers.Count + Data.Helpers.Count)</span><span class="stat-label">Flowers</span></div>
+    <div class="stat"><span class="stat-num">@Data.Recipes.Count</span><span class="stat-label">Recipes</span></div>
+    <div class="stat"><span class="stat-num">@Data.Bosses.Count</span><span class="stat-label">Bosses</span></div>
+</div>
+
+<h2 class="section-title">Explore the wiki</h2>
+<div class="card-grid">
+    @foreach (var card in Cards)
+    {
+        <a class="card" href="@card.Href">
+            <div class="card-top">
+                @if (Wiki.Item(card.Icon)?.Icon is { } icon)
+                {
+                    <img src="@icon" alt="" class="pixel card-icon" />
+                }
+                <span class="card-count">@card.Count</span>
+            </div>
+            <div class="card-title">@card.Title <span class="arrow">→</span></div>
+            <div class="card-desc">@card.Description</div>
+        </a>
+    }
+</div>
+
+<h2 class="section-title">Start here</h2>
+<ol class="steps">
+    <li>
+        <div class="step-num">1</div>
+        <div>
+            <h3>Grow your first mana</h3>
+            <p>Craft a <a href="item/dawnpetal">Dawnpetal</a> (Dandelion + Bone Meal) and a <a href="item/mana_pool_small">Small Mana Pool</a>. Plant the flower within 6 blocks of the pool under open sky.</p>
+        </div>
+    </li>
+    <li>
+        <div class="step-num">2</div>
+        <div>
+            <h3>Infuse materials</h3>
+            <p>Drop an Iron Ingot on a pool holding 3,000 mana to get a <a href="item/mana_ingot">Mana Ingot</a>. Stone and logs become <a href="item/livingrock">Livingrock</a> and <a href="item/livingwood">Livingwood</a> the same way.</p>
+        </div>
+    </li>
+    <li>
+        <div class="step-num">3</div>
+        <div>
+            <h3>Build the network</h3>
+            <p>Move mana with <a href="item/mana_spreader">Spreaders</a>, carve runes at the <a href="item/rune_altar">Rune Altar</a>, then summon the <a href="bosses">bosses</a> at the Ritual Altar.</p>
+        </div>
+    </li>
+</ol>
+
+@code {
+    WikiData Data => Wiki.Data;
+
+    record Card(string Title, string Href, string Icon, string Count, string Description);
+
+    IEnumerable<Card> Cards =>
+    [
+        new("Getting Started", "guide/getting-started", "wb:lexicon", "Guide", "Your first 30 minutes: flowers, pools and the first infusion."),
+        new("Progression", "guide/progression", "wb:mana_diamond", "7 stages", "The full road from your first flower to the Heartwood Warden."),
+        new("Items", "items", "wb:mana_ingot", $"{Data.Items.Count(i => !i.IsBlock)} entries", "Materials, runes, tools, armor, trinkets and flasks."),
+        new("Blocks", "blocks", "wb:mana_pool", $"{Data.Items.Count(i => i.IsBlock)} entries", "Flowers, pools, the mana network, machines and building blocks."),
+        new("Flowers", "flowers", "wb:dawnpetal", $"{Data.Flowers.Count + Data.Helpers.Count} flowers", "What every flower needs, how much mana it makes and what helpers do."),
+        new("Bosses", "bosses", "wb:warden_sigil", $"{Data.Bosses.Count} bosses", "Summoning, attacks, strategy and drops."),
+        new("Recipes", "recipes", "wb:rune_altar", $"{Data.Recipes.Count} recipes", "Crafting, pool infusion, Rune Altar and Mana Brewery recipes."),
+        new("Mana Network", "guide/moving-mana", "wb:mana_spreader", "Guide", "Spreaders, relays, prisms, lenses and sparks."),
+    ];
+}

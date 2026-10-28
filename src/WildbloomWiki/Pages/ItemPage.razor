@@ -1,0 +1,181 @@
+@page "/item/{Slug}"
+@inject WikiService Wiki
+
+@if (_item is null)
+{
+    <PageTitle>Not found · Wildbloom Wiki</PageTitle>
+    <h1>Not found</h1>
+    <p>There's no Wildbloom item called “@Slug”. Try the <a href="items">item list</a>.</p>
+}
+else
+{
+
+<PageTitle>@_item.Name · Wildbloom Wiki</PageTitle>
+
+<Breadcrumbs Parent="@(_item.IsBlock ? "Blocks" : "Items")" ParentHref="@(_item.IsBlock ? "blocks" : "items")" Current="@_item.Name" />
+
+<div class="item-layout">
+    <div class="item-main">
+        <div class="item-hero">
+            <div class="item-hero-icon">
+                @if (_item.Icon is not null)
+                {
+                    <img src="@_item.Icon" alt="@_item.Name" class="pixel" />
+                }
+            </div>
+            <div>
+                <h1>@_item.Name</h1>
+                <div class="tags">
+                    <span class="tag">@_item.Category</span>
+                    <span class="tag tag-muted">@(_item.IsBlock ? "Block" : "Item")</span>
+                    <code class="tag tag-code">@_item.Id</code>
+                </div>
+            </div>
+        </div>
+
+        @if (_item.Text.Count > 0)
+        {
+            <div class="prose">
+                <GuideText Lines="_item.Text" SelfId="@_item.Id" />
+            </div>
+        }
+        @if (_item.Guide is not null)
+        {
+            <p class="more"><a href="@WikiService.GuideHref(_item.Guide)">Read more in the Lexicon →</a></p>
+        }
+
+
+        @if (_recipes.Count > 0)
+        {
+            <h2>How to make</h2>
+            <div class="recipe-row">
+                @foreach (var r in _recipes)
+                {
+                    <RecipeCard Recipe="r" />
+                }
+            </div>
+        }
+        else if (_obtain is not null)
+        {
+            <h2>How to get</h2>
+            <p>@((MarkupString)_obtain)</p>
+        }
+
+        @if (_uses.Count > 0)
+        {
+            <h2>Used in <span class="count">@_uses.Count</span></h2>
+            <div class="uses">
+                @foreach (var r in _uses)
+                {
+                    <a class="use" href="@($"item/{r.Output.Split(':')[^1]}")">
+                        <Slot Id="@r.Output" />
+                        <span class="use-name">@Wiki.Name(r.Output)</span>
+                        <span class="use-type">@r.StationLabel</span>
+                    </a>
+                }
+            </div>
+        }
+
+        @if (_enchants is not null)
+        {
+            <h2>Mana Enchanter</h2>
+            <p>Dropped on the <a href="item/mana_enchanter">Mana Enchanter</a> with a tool or armor piece, this rune adds the first of these the item can take (2,000 mana each):</p>
+            <ul class="g-list">
+                @foreach (var e in _enchants.Enchants)
+                {
+                    <li>@e</li>
+                }
+            </ul>
+        }
+    </div>
+
+    <aside class="infobox">
+        <div class="infobox-icon">
+            @if (_item.Icon is not null)
+            {
+                <img src="@_item.Icon" alt="" class="pixel" />
+            }
+        </div>
+        <div class="infobox-title">@_item.Name</div>
+        <dl>
+            <dt>Type</dt><dd>@(_item.IsBlock ? "Block" : "Item")</dd>
+            <dt>Category</dt><dd>@_item.Category</dd>
+            @if (_flower is not null)
+            {
+                <dt>Tier</dt><dd>@_flower.Tier</dd>
+                <dt>Trigger</dt><dd>@_flower.Trigger</dd>
+                @if (_flower.Output > 0)
+                {
+                    <dt>Output</dt><dd>@_flower.Output mana / 2 s</dd>
+                }
+            }
+            @if (_helper is not null)
+            {
+                <dt>Range</dt><dd>@_helper.Radius blocks</dd>
+                <dt>Cost</dt><dd>@_helper.Cost mana per job</dd>
+            }
+            @if (_item.Damage is { } dmg)
+            {
+                <dt>Damage</dt><dd>@dmg</dd>
+            }
+            @if (_item.Durability is { } dur)
+            {
+                <dt>Durability</dt><dd>@dur.ToString("N0")</dd>
+            }
+            @if (_item.Armor is { } armor)
+            {
+                <dt>Armor</dt><dd>@armor</dd>
+            }
+            @if (_item.Charge is { } charge)
+            {
+                <dt>Max charge</dt><dd>@charge.ToString("N0")</dd>
+            }
+            @if (_item.Capacity is { } cap)
+            {
+                <dt>@(_item.Category == "Mana Pools" ? "Capacity" : "Mana buffer")</dt><dd>@cap.ToString("N0")</dd>
+            }
+            @if (_item.Effect is { } effect)
+            {
+                <dt>Effect</dt><dd>@effect</dd>
+            }
+            @if (_item.Stats is { } stats && _item.Damage is null && _item.Armor is null && _item.Capacity is null && _flower is null)
+            {
+                <dt>Notes</dt><dd>@stats</dd>
+            }
+            <dt>ID</dt><dd><code>@_item.Id</code></dd>
+        </dl>
+    </aside>
+</div>
+}
+
+@code {
+    [Parameter] public string Slug { get; set; } = "";
+
+    Item? _item;
+    Flower? _flower;
+    Helper? _helper;
+    RuneEnchant? _enchants;
+    List<Recipe> _recipes = [];
+    List<Recipe> _uses = [];
+    string? _obtain;
+
+    protected override void OnParametersSet()
+    {
+        _item = Wiki.ItemBySlug(Slug);
+        if (_item is null) return;
+        _flower = Wiki.Flower(_item.Id);
+        _helper = Wiki.Helper(_item.Id);
+        _enchants = Wiki.Data.Enchantments.FirstOrDefault(e => e.Rune == _item.Id);
+        _recipes = Wiki.RecipesFor(_item.Id).ToList();
+        _uses = Wiki.RecipesUsing(_item.Id).DistinctBy(r => r.Output).ToList();
+        var bosses = Wiki.Data.Bosses.Where(b => b.Drops.Any(d => d.Id == _item.Id)).ToList();
+        _obtain = bosses.Count > 0
+            ? "Dropped by " + string.Join(" and ", bosses.Select(b =>
+                $"the <a href=\"bosses#{b.Slug}\">{b.Name}</a> ({b.Drops.First(d => d.Id == _item.Id).Count})")) + "."
+            : null;
+        if (_item.Id == "wb:mana_crystal")
+            _obtain = "Mined from <a href=\"item/crystal_ore\">Mana Crystal Ore</a> (1-3 each, Fortune helps). " + _obtain;
+        if (_item.Id == "wb:crystal_ore")
+            _obtain = "Found in stone and deepslate between Y=0 and Y=-60.";
+    }
+}

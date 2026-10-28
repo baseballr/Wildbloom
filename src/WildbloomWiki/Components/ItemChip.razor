@@ -1,0 +1,22 @@
+@inject WikiService Wiki
+
+@* Inline item name with its icon; links when it's a Wildbloom item. *@
+@if (Wiki.Item(Id) is { } item)
+{
+    <a class="chip" href="@WikiService.ItemHref(item)">
+        @if (item.Icon is not null)
+        {
+            <img src="@item.Icon" alt="" class="pixel" loading="lazy" />
+        }
+        @Prefix@item.Name
+    </a>
+}
+else
+{
+    <span class="chip chip-vanilla">@Prefix@Wiki.Name(Id)</span>
+}
+
+@code {
+    [Parameter, EditorRequired] public string Id { get; set; } = "";
+    [Parameter] public string? Prefix { get; set; }
+}

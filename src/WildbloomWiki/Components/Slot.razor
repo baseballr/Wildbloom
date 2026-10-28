@@ -1,0 +1,38 @@
+@inject WikiService Wiki
+
+@* One inventory slot: a Wildbloom item (icon, links to its page) or a vanilla item (short label). *@
+@if (string.IsNullOrEmpty(Id))
+{
+    <span class="slot @(Large ? "slot-lg" : "")"></span>
+}
+else if (Wiki.Item(Id) is { } item)
+{
+    <a class="slot @(Large ? "slot-lg" : "")" href="@WikiService.ItemHref(item)" title="@item.Name">
+        @if (item.Icon is not null)
+        {
+            <img src="@item.Icon" alt="@item.Name" class="pixel" loading="lazy" />
+        }
+        @if (Count > 1)
+        {
+            <span class="slot-count">@Count</span>
+        }
+    </a>
+}
+else
+{
+    var name = Wiki.Name(Id);
+    <span class="slot slot-vanilla @(Large ? "slot-lg" : "")" title="@name">
+        <span class="slot-vanilla-label">@name.Replace("any ", "")</span>
+        @if (Count > 1)
+        {
+            <span class="slot-count">@Count</span>
+        }
+    </span>
+}
+
+@code {
+    [Parameter] public string? Id { get; set; }
+    [Parameter] public int Count { get; set; } = 1;
+    [Parameter] public bool Large { get; set; }
+
+}

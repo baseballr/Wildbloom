@@ -1,0 +1,78 @@
+@page "/flowers"
+@inject WikiService Wiki
+
+<PageTitle>Flowers · Wildbloom Wiki</PageTitle>
+
+<Breadcrumbs Current="Flowers" />
+
+<h1>Flowers</h1>
+<p class="lead">
+    Generating flowers make mana and send it to pools within 6 blocks every 2 seconds. Helper flowers spend mana from
+    pools within 8 blocks to do a job once a second.
+</p>
+
+<div class="callout">
+    <strong>Tiers.</strong> Tier 1 is crafted. Tier 2 is infused with a Mana Ingot, tier 3 with a Mana Diamond and tier 4
+    with Fae Steel, each plus a lower flower and a signature item. See <a href="guide/pool-infusion">Pool Infusion</a>.
+</div>
+
+<h2>Generating flowers <span class="count">@Wiki.Data.Flowers.Count</span></h2>
+<div class="chips">
+    <button class="chip-btn @(_tier == 0 ? "on" : "")" @onclick="() => _tier = 0">All tiers</button>
+    @for (var t = 1; t <= 4; t++)
+    {
+        var tier = t;
+        <button class="chip-btn @(_tier == tier ? "on" : "")" @onclick="() => _tier = tier">Tier @tier</button>
+    }
+</div>
+<div class="table-wrap">
+    <table class="table">
+        <thead>
+            <tr><th>Flower</th><th>Tier</th><th>Works when</th><th class="num">Mana / 2 s</th><th>Made from</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var f in Wiki.Data.Flowers.Where(f => _tier == 0 || f.Tier == _tier).OrderBy(f => f.Tier).ThenByDescending(f => f.Output))
+            {
+                var recipe = Wiki.RecipesFor(f.Id).FirstOrDefault();
+                <tr>
+                    <td><ItemChip Id="@f.Id" /></td>
+                    <td><span class="tier tier-@f.Tier">T@(f.Tier)</span></td>
+                    <td>@f.Trigger</td>
+                    <td class="num">@(f.Output > 0 ? f.Output.ToString("N0") : "varies")</td>
+                    <td class="small">
+                        @if (recipe is not null)
+                        {
+                            @string.Join(" + ", recipe.Ingredients.Select(Wiki.Name))
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<h2>Helper flowers <span class="count">@Wiki.Data.Helpers.Count</span></h2>
+<div class="item-grid wide">
+    @foreach (var h in Wiki.Data.Helpers)
+    {
+        var item = Wiki.Item(h.Id);
+        if (item is null) continue;
+        <a class="item-card tall" href="@WikiService.ItemHref(item)">
+            <div class="item-card-icon">
+                @if (item.Icon is not null)
+                {
+                    <img src="@item.Icon" alt="" class="pixel" loading="lazy" />
+                }
+            </div>
+            <div class="item-card-body">
+                <div class="item-card-name">@item.Name</div>
+                <div class="item-card-meta">@h.Radius block range · @h.Cost mana per job</div>
+                <div class="item-card-desc">@item.Text.FirstOrDefault()</div>
+            </div>
+        </a>
+    }
+</div>
+
+@code {
+    int _tier;
+}

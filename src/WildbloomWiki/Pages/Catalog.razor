@@ -1,0 +1,79 @@
+@page "/items"
+@page "/blocks"
+@inject WikiService Wiki
+@inject NavigationManager Navigation
+
+<PageTitle>@Title · Wildbloom Wiki</PageTitle>
+
+<Breadcrumbs Current="@Title" />
+
+<h1>@Title</h1>
+<p class="lead">@(Blocks ? "Every placeable block in Wildbloom: flowers, pools, the mana network, machines and building blocks." : "Every item in Wildbloom: materials, runes, ritual keys, tools, armor, trinkets and flasks.")</p>
+
+<div class="filters">
+    <input class="filter-input" placeholder="Filter by name…" @bind="_filter" @bind:event="oninput" />
+    <div class="chips">
+        <button class="chip-btn @(_category is null ? "on" : "")" @onclick="() => _category = null">All <span>@Pool.Count()</span></button>
+        @foreach (var c in Categories)
+        {
+            var cat = c;
+            <button class="chip-btn @(_category == cat ? "on" : "")" @onclick="() => _category = cat">@cat <span>@Pool.Count(i => i.Category == cat)</span></button>
+        }
+    </div>
+</div>
+
+@foreach (var group in Shown.GroupBy(i => i.Category))
+{
+    <h2 class="cat-title" id="@Slug(group.Key)">@group.Key</h2>
+    <div class="item-grid">
+        @foreach (var item in group)
+        {
+            <a class="item-card" href="@WikiService.ItemHref(item)">
+                <div class="item-card-icon">
+                    @if (item.Icon is not null)
+                    {
+                        <img src="@item.Icon" alt="" class="pixel" loading="lazy" />
+                    }
+                </div>
+                <div class="item-card-body">
+                    <div class="item-card-name">@item.Name</div>
+                    <div class="item-card-meta">@Meta(item)</div>
+                </div>
+            </a>
+        }
+    </div>
+}
+@if (!Shown.Any())
+{
+    <p class="muted">Nothing matches “@_filter”.</p>
+}
+
+@code {
+    string _filter = "";
+    string? _category;
+
+    bool Blocks => Navigation.ToBaseRelativePath(Navigation.Uri).StartsWith("blocks");
+    string Title => Blocks ? "Blocks" : "Items";
+
+    IEnumerable<Item> Pool => Wiki.Data.Items.Where(i => i.IsBlock == Blocks);
+    IEnumerable<string> Categories => Wiki.Data.Categories.Where(c => Pool.Any(i => i.Category == c));
+
+    IEnumerable<Item> Shown => Pool
+        .Where(i => _category is null || i.Category == _category)
+        .Where(i => _filter.Length == 0 || i.Name.Contains(_filter, StringComparison.OrdinalIgnoreCase));
+
+    protected override void OnParametersSet() => _category = null;
+
+    static string Slug(string s) => new(s.ToLowerInvariant().Select(c => char.IsLetterOrDigit(c) ? c : '-').ToArray());
+
+    string Meta(Item item)
+    {
+        if (Wiki.Flower(item.Id) is { } f) return f.Output > 0 ? $"Tier {f.Tier} · {f.Output} mana / 2 s" : $"Tier {f.Tier} · {f.Trigger}";
+        if (Wiki.Helper(item.Id) is { } h) return $"{h.Cost} mana per job · {h.Radius} block range";
+        if (item.Capacity is { } cap && item.Category == "Mana Pools") return $"Holds {cap:N0} mana";
+        if (item.Damage is { } dmg) return $"{dmg} damage" + (item.Charge is { } c ? $" · {c:N0} charge" : "");
+        if (item.Armor is { } armor) return $"{armor} armor";
+        if (item.Effect is { } effect) return effect;
+        return item.Stats ?? item.Category;
+    }
+}

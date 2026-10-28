@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wildbloom Wiki</title>
+    <meta name="description" content="The wiki for Wildbloom, a Minecraft Bedrock add-on of flower magic: mana pools, runes, machines and bosses." />
+    <base href="/" />
+    <link rel="icon" type="image/png" href="img/items/dawnpetal.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/app.css" />
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem("wb-theme");
+                if (t) document.documentElement.setAttribute("data-theme", t);
+            } catch (e) { }
+        })();
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="boot">
+            <img src="img/items/dawnpetal.png" alt="" class="pixel" width="48" height="48" />
+            <div>Loading the Wildbloom Wiki…</div>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui">
+        Something went wrong.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">×</a>
+    </div>
+    <script>
+        window.wiki = {
+            registerHotkey: function (dotnet) {
+                document.addEventListener("keydown", function (e) {
+                    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+                        e.preventDefault();
+                        dotnet.invokeMethodAsync("OpenSearch");
+                    } else if (e.key === "/" && !/input|textarea/i.test(document.activeElement.tagName)) {
+                        e.preventDefault();
+                        dotnet.invokeMethodAsync("OpenSearch");
+                    }
+                });
+            },
+            _lastHash: null,
+            scrollToHash: function () {
+                var key = location.pathname + location.hash;
+                if (key === wiki._lastHash) return;
+                wiki._lastHash = key;
+                if (!location.hash) { window.scrollTo(0, 0); return; }
+                var el = document.getElementById(decodeURIComponent(location.hash.substring(1)));
+                if (el) el.scrollIntoView({ block: "start" });
+                else wiki._lastHash = null;
+            },
+            toggleTheme: function () {
+                var root = document.documentElement;
+                var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+                root.setAttribute("data-theme", next);
+                try { localStorage.setItem("wb-theme", next); } catch (e) { }
+            }
+        };
+    </script>
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>

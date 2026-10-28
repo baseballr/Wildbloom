@@ -1,0 +1,61 @@
+name: Deploy wiki to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate wiki data from the add-on
+        run: |
+          pip install pillow
+          python tools/build_wiki_data.py content/Wildbloom.mcaddon content/lexicon.txt content/bosses.png src/WildbloomWiki/wwwroot
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Publish Blazor app
+        run: dotnet publish src/WildbloomWiki/WildbloomWiki.csproj -c Release -o out
+
+      - name: Prepare for GitHub Pages
+        run: |
+          repo="${{ github.event.repository.name }}"
+          # Project sites live under /<repo>/; a <user>.github.io repo is served from the root.
+          if [[ "$repo" == *.github.io ]]; then base="/"; else base="/$repo/"; fi
+          sed -i "s|<base href=\"/\" />|<base href=\"$base\" />|" out/wwwroot/index.html
+          # Deep links (e.g. /item/mana_pool) hit GitHub's 404 page, which boots the app at that URL.
+          cp out/wwwroot/index.html out/wwwroot/404.html
+          touch out/wwwroot/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out/wwwroot
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
