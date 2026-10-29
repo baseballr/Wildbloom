@@ -7,7 +7,7 @@ Your first 30 minutes
 3. Place the pool, then plant flowers within 6 blocks of it. Dawnpetals need open sky and daylight. Tideblooms need a water block touching them.
 4. Make a Mana Wand (Dawnpetal on two sticks). Sneak and right-click anything from Wildbloom to read it. Right-click a pool with an empty hand to see its mana.
 5. Drop an Iron Ingot onto the pool. Once the pool holds 3,000 mana it turns into a Mana Ingot. That is how all pool infusion works: drop the items on top and wait.
-6. Turn stone into Livingrock and logs into Livingwood the same way, then craft a full Mana Pool. A Mana Diamond needs 8,000 mana, more than a Small Mana Pool holds (5,000).
+6. Turn stone into Livingrock and logs or any planks into Livingwood Planks the same way, then craft a full Mana Pool. A Mana Diamond needs 8,000 mana, more than a Small Mana Pool holds (5,000).
 Signs to watch for
 Green sparkles from a flower: it just sent mana to a pool.
 Grey smoke from a flower: it made mana but no pool within 6 blocks had room.
@@ -19,7 +19,7 @@ Stage 1: First mana
 Dawnpetal, Tidebloom, Small Mana Pool, Mana Wand.
 Goal: a pool that refills on its own.
 Stage 2: Infusion basics
-Infuse Livingrock (stone, 500), Livingwood Planks (any log, 500) and Mana Ingots (iron, 3,000).
+Infuse Livingrock (stone, 500), Livingwood Planks (any log for 4, or any planks one for one, 125 each) and Mana Ingots (iron, 3,000).
 Craft a Mana Pool (Small Mana Pool ringed with Livingrock), a Mana Spreader, Livingwood gear and your first Mana tools.
 Plant a Living Sapling for a tree that makes mana.
 Stage 3: More flowers, first runes
@@ -552,9 +552,11 @@ Pool infusion: drop Mossbloom + Mana Diamond + Bone Meal into a pool holding 8,0
 Drop all the items onto one pool. When the pool holds enough mana it uses them up and makes the result. The pool must be able to hold the cost: Small Mana Pool 5,000, Mana Pool 10,000, Grand Mana Pool 100,000. Higher tier recipes also need a lower flower, so keep spares.
 
 === Materials
+Livingwood Planks  125 mana
+  any Planks  (Small Mana Pool+)
 Livingrock  500 mana
   Stone  (Small Mana Pool+)
-Livingwood Planks  500 mana
+4x Livingwood Planks  500 mana
   any Log  (Small Mana Pool+)
 Mana Glass  1,000 mana
   Glass + Mana Ingot  (Small Mana Pool+)
