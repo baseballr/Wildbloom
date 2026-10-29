@@ -3,6 +3,11 @@
 The wiki for **Wildbloom**, a Minecraft Bedrock add-on of flower magic. It's a Blazor WebAssembly site,
 deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to `main`.
 
+<!-- wildbloom-version -->
+**Add-on version:** v0.1.13 ([download](content/Wildbloom.mcaddon))  
+**Works with:** Minecraft Bedrock 1.26.30 – latest
+<!-- /wildbloom-version -->
+
 Nothing in the wiki is typed in by hand. Items, blocks, recipes, flowers, bosses and the guide pages are all
 generated from the add-on itself:
 
@@ -14,9 +19,10 @@ generated from the add-on itself:
 
 ## Updating for a new add-on version
 
-1. Replace `content/Wildbloom.mcaddon` with the new build (keep the file name).
-2. Replace `content/lexicon.txt` with the matching `book-preview.txt`.
-3. Push to `main`. The workflow regenerates everything and redeploys.
+1. Run `python tools/update_addon.py path/to/Wildbloom-vX.Y.Z.mcaddon path/to/book-preview.txt`.
+   It copies the build to `content/Wildbloom.mcaddon`, the Lexicon text to `content/lexicon.txt`, and updates the
+   version lines at the top of this README from the pack's manifest.
+2. Push to `main`. The workflow regenerates everything and redeploys.
 
 ## Running locally
 

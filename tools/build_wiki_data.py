@@ -47,6 +47,7 @@ for line in zf.read(find("Wildbloom_BP/texts/en_US.lang")).decode("utf-8").split
 
 manifest = read_json(find("Wildbloom_BP/manifest.json"))
 version = ".".join(str(x) for x in manifest["header"]["version"])
+min_engine = ".".join(str(x) for x in manifest["header"]["min_engine_version"])
 
 VANILLA = {
     "ender_eye": "Eye of Ender", "tnt": "TNT", "heart_of_the_sea": "Heart of the Sea",
@@ -582,6 +583,7 @@ with open(os.path.join(OUT, download), "wb") as f:
 wiki = {
     "version": version,
     "download": download,
+    "minEngine": min_engine,
     "categories": [c for c in CATEGORY_ORDER if any(i["category"] == c for i in items.values())],
     "items": sorted(items.values(), key=lambda i: (CATEGORY_ORDER.index(i["category"]), i["name"])),
     "recipes": recipes,

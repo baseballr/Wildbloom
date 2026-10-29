@@ -4,6 +4,7 @@ public sealed class WikiData
 {
     public string Version { get; set; } = "";
     public string Download { get; set; } = "";
+    public string MinEngine { get; set; } = "";
     public List<string> Categories { get; set; } = [];
     public List<Item> Items { get; set; } = [];
     public List<Recipe> Recipes { get; set; } = [];
