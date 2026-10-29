@@ -90,7 +90,7 @@ Once over 90% full, an Overflow Mana Pool pushes 500 mana a second into every po
 === Charging gear
 Charging and repairing
 Drop any mana tool, weapon, battery or the Mana Band onto a pool. Every second it gains up to 1,000 charge and repairs up to 25 durability (2 mana per point).
-Tool charge shows in the item's tooltip. Tools still work as normal tools with no charge; they just lose their special abilities.
+Tool charge shows in the item's tooltip. Mana tools never break: each block you mine costs 10 charge instead of durability. With no charge they wear down to 1 durability and stop there. At that point they work like your bare hand (slow mining, 1 damage per hit) until you charge them again.
 Other ways
 Mana Battery / Tablet: right-click a pool to empty the battery into it, sneak-right-click to fill the battery (up to 5,000 per click).
 Mana Mirror: charges the gear in your off hand from a bound pool up to 64 blocks away.
@@ -939,7 +939,7 @@ Crafting table: shaped
    G = Gold Ingot, M = Mana Ingot  (_ = empty)
 
 ##### Tools & Weapons  [Livingwood tools | Mana tools | Verdant tools | Heartwood tools | Special weapons & tools | Back]
-Mana tools need charge for their abilities. Drop them on a pool to charge and repair them.
+Mana tools (Mana, Verdant, Heartwood and the special ones) never break. Mining costs 10 charge per block instead of durability; with no charge they wear down to 1 durability and then work like a bare hand until you charge them. Drop them on a pool to charge and repair them. Livingwood tools wear out and break like vanilla tools.
 
 === Livingwood tools
 Basic tools from Livingwood Planks. No mana abilities.

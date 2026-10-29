@@ -4,7 +4,7 @@ The wiki for **Wildbloom**, a Minecraft Bedrock add-on of flower magic. It's a B
 deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to `main`.
 
 <!-- wildbloom-version -->
-**Add-on version:** v0.1.16 ([download](content/Wildbloom.mcaddon))  
+**Add-on version:** v0.1.18 ([download](content/Wildbloom.mcaddon))  
 **Works with:** Minecraft Bedrock 1.26.30 – latest
 <!-- /wildbloom-version -->
 
