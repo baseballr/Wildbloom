@@ -440,12 +440,12 @@ Endgame: build out on the End's outer islands.
 How to make
 Pool infusion: drop Nightshade + Fae Steel + Eye of Ender into a pool holding 20,000 mana (Grand Mana Pool or bigger).
 
-##### Helper Flowers  [Reaper | Collector | Herder | Smelter | Sorter | Logger | Tiller | Miner | Lamp Bloom | Warden Bloom | Mender | Healer | Feeder | Warp Bloom | Seeder | Back]
-Helper flowers do a job every 1 second and pay for it from pools within 8 blocks. If the pools are empty they stop. Sneak-right-click one with the Wand to see its range and cost.
+##### Helper Flowers  [Reaper | Collector | Herder | Smelter | Sorter | Logger | Tiller | Miner | Lamp Bloom | Warden Bloom | Mender | Healer | Feeder | Warp Bloom | Seeder | Quickbloom | Back]
+Helper flowers do a job every 1 second and pay for it from pools within 8 blocks. If the pools are empty they stop. A helper's range reaches just as far up and down as it does sideways, so you can tuck it under a floor or farm. Sneak-right-click one with the Wand to see its range and cost.
 
 === Reaper
 Reaper
-Harvests fully grown crops within 5 blocks and replants them, up to 4 a second. The drops fall on the ground, so pair it with a Collector. 8 mana per crop.
+Harvests fully grown crops within 5 blocks in every direction (up and down too, so it works planted under the farm) and replants them. It also cuts sugar cane taller than 1 block, leaving the bottom block to regrow, up to 4 a second. The drops fall on the ground, so pair it with a Collector. 8 mana per crop.
 
 How to make
 Pool infusion: drop Harvestbloom + Mana Ingot + Iron Hoe into a pool holding 4,000 mana (Small Mana Pool or bigger).
@@ -548,6 +548,13 @@ Turns bare dirt within 8 blocks into grass, sometimes with a flower on top. Up t
 How to make
 Pool infusion: drop Mossbloom + Mana Diamond + Bone Meal into a pool holding 8,000 mana (Mana Pool or bigger).
 
+=== Quickbloom
+Quickbloom
+Makes plants grow faster. Each second it picks up to 4 plants within 5 blocks (up and down too) and pushes each one growth stage: wheat, carrots, potatoes, beetroot, melon and pumpkin stems, sweet berries, cocoa, nether wart, and sugar cane or cactus up to 3 tall. Vanilla saplings it touches grow into trees on their next growth tick. 40 mana per stage, so a busy one uses a lot of mana.
+
+How to make
+Pool infusion: drop Harvestbloom + Mana Diamond + Bone Block into a pool holding 8,000 mana (Mana Pool or bigger).
+
 ##### Pool Infusion  [Materials | Generating flowers | Helper flowers | Back]
 Drop all the items onto one pool. When the pool holds enough mana it uses them up and makes the result. The pool must be able to hold the cost: Small Mana Pool 5,000, Mana Pool 10,000, Grand Mana Pool 100,000. Higher tier recipes also need a lower flower, so keep spares.
 
@@ -640,6 +647,8 @@ Warp Bloom  8,000 mana
   Voidbloom + Fae Steel + Ender Pearl  (Mana Pool+)
 Seeder  8,000 mana
   Mossbloom + Mana Diamond + Bone Meal  (Mana Pool+)
+Quickbloom  8,000 mana
+  Harvestbloom + Mana Diamond + Bone Block  (Mana Pool+)
 
 ##### Rune Altar  [Runes | Alloys and ritual keys | Back]
 Place a Rune Altar within 6 blocks of your pools and drop the ingredients on top. It pays from its own buffer (holds 20,000, fill it with a Spreader) or from all pools within 6 blocks added together, so big recipes can draw from several pools at once.
