@@ -90,7 +90,7 @@ Once over 90% full, an Overflow Mana Pool pushes 500 mana a second into every po
 === Charging gear
 Charging and repairing
 Drop any mana tool, weapon, battery or the Mana Band onto a pool. Every second it gains up to 1,000 charge and repairs up to 25 durability (2 mana per point).
-Tool charge shows in the item's tooltip. Mana tools never break: each block you mine costs 10 charge instead of durability. With no charge they wear down to 1 durability and stop there. At that point they work like your bare hand (slow mining, 1 damage per hit) until you charge them again.
+Tool charge shows in the item's tooltip. Mana tools never break: each block you mine costs 10 charge instead of durability. Mana swords cost 10 charge per hit the same way. With no charge they wear down almost to nothing and stop there; they never break. At that point they work like your bare hand (slow mining, 1 damage per hit) until you charge them again. Mana, Verdant and Heartwood armor also runs on charge (see Armor).
 Other ways
 Mana Battery / Tablet: right-click a pool to empty the battery into it, sneak-right-click to fill the battery (up to 5,000 per click).
 Mana Mirror: charges the gear in your off hand from a bound pool up to 64 blocks away.
@@ -452,7 +452,7 @@ Pool infusion: drop Harvestbloom + Mana Ingot + Iron Hoe into a pool holding 4,0
 
 === Collector
 Collector
-Needs a chest or barrel right next to it. Every second it picks up dropped items within 6 blocks and puts them into that chest. 2 mana per stack.
+Needs a chest or barrel right next to it. Every second it picks up dropped items within 8 blocks and puts them into that chest. 2 mana per stack.
 
 How to make
 Pool infusion: drop Dawnpetal + Mana Ingot + Hopper into a pool holding 4,000 mana (Small Mana Pool or bigger).
@@ -950,7 +950,7 @@ Crafting table: shaped
    G = Gold Ingot, M = Mana Ingot  (_ = empty)
 
 ##### Tools & Weapons  [Livingwood tools | Mana tools | Verdant tools | Heartwood tools | Special weapons & tools | Back]
-Mana tools (Mana, Verdant, Heartwood and the special ones) never break. Mining costs 10 charge per block instead of durability; with no charge they wear down to 1 durability and then work like a bare hand until you charge them. Drop them on a pool to charge and repair them. Livingwood tools wear out and break like vanilla tools.
+Mana tools (Mana, Verdant, Heartwood and the special ones) never break. Mining costs 10 charge per block instead of durability; swords cost 10 charge per hit. With no charge they wear down almost to nothing (never breaking) and then work like a bare hand until you charge them. Drop them on a pool to charge and repair them. Livingwood tools wear out and break like vanilla tools.
 
 === Livingwood tools
 Basic tools from Livingwood Planks. No mana abilities.
@@ -1045,6 +1045,8 @@ Terraformer Wand  50,000 charge
 
 ##### Armor
 Wear all four pieces of one set for its bonus. Armor is crafted like vanilla armor from the set's material.
+
+Mana, Verdant and Heartwood armor never breaks. Each piece holds charge (Mana 20,000, Verdant 50,000, Heartwood 100,000) and damage you take is paid from that charge instead of durability. A piece with no charge wears down almost to nothing and then stops protecting you until you charge it again: drop it on a pool. Livingwood armor wears out and breaks like vanilla armor. Enchants work on all mana gear: Unbreaking makes it use charge less often, and Sharpness, Efficiency, Protection and the rest work as normal. Gear with no charge loses its enchants' help too.
 
 Livingwood armor  7 armor points total
   Full set bonus: Slowly charges the mana gear in your main hand (20 a second).
@@ -1405,6 +1407,9 @@ Livingrock ruins guarded by a zombie or skeleton. The chest holds an elemental r
 Gardens and shrines appear on open ground around you as you explore new land.
 
 ##### Help & FAQ
+My altar, brewery or enchanter does nothing
+If it smokes and shows a message, the items are right but it needs more mana: the message shows how much it has and needs. It uses its own stored mana or the pools within 6 blocks added together. No smoke means the items don't match a recipe yet.
+
 My pool won't craft
 Drop all the items close together on top of the pool. If the pool smokes, it needs more mana; the message shows how much. If it says the pool is too small, use a bigger pool (Mana Diamond needs a Mana Pool).
 
