@@ -489,7 +489,7 @@ Pool infusion: drop Mossbloom + Mana Ingot + Iron Axe into a pool holding 4,000 
 
 === Tiller
 Tiller
-Turns dirt and grass within 5 blocks into farmland, then plants seeds, carrots or potatoes from a chest next to it (add-on seeds too, on their own farmland). Up to 3 blocks a second, 6 mana each.
+Turns dirt and grass within 5 blocks into farmland, then plants seeds, carrots or potatoes from a chest next to it. Up to 3 blocks a second, 6 mana each.
 
 How to make
 Pool infusion: drop Harvestbloom + Mana Ingot + Wheat Seeds into a pool holding 4,000 mana (Small Mana Pool or bigger).
