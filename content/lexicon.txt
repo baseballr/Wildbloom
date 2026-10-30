@@ -12,6 +12,7 @@ Signs to watch for
 Green sparkles from a flower: it just sent mana to a pool.
 Grey smoke from a flower: it made mana but no pool within 6 blocks had room.
 Grey smoke from a pool: it sees your items but needs more mana. A message tells you how much.
+Mana beams: hold the Mana Wand to see the pulses of mana travelling from spreaders, relays and prisms.
 Read the Progression chapter next for the full road from your first flower to the Heartwood Warden.
 
 ##### Progression
