@@ -1030,8 +1030,8 @@ Gale Glaive  9 dmg, 100,000 charge
    [S__]
    F = Fae Steel, S = Stick  (_ = empty)
 
-Verdant Bow  50,000 charge
-  Right-click while looking toward a hostile mob within 24 blocks to strike it with a mana bolt for 9 damage. 150 charge, no arrows needed.
+Verdant Bow  1,200 uses, 50,000 charge
+  Right-click while looking toward a hostile mob within 24 blocks to strike it with a mana bolt for 9 damage. It only hits mobs you can see: walls and solid blocks stop it. 150 charge, no arrows needed.
   Crafting table: shaped
    [AS_]
    [A_S]
@@ -1046,7 +1046,7 @@ Fae Shovel  4 dmg, 100,000 charge
    [S]
    F = Fae Steel, S = Stick  (_ = empty)
 
-Terraformer Wand  50,000 charge
+Terraformer Wand  1,200 uses, 50,000 charge
   Hold a block in your off hand and right-click a surface: the 5x5 square on that face turns into that block. 5 charge per block.
   Crafting table: shaped
    [_VD]
