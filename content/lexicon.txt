@@ -156,7 +156,7 @@ Dawnpetal  tier 1
 Makes 40 mana every 2 s (1,200 a minute) during the day, as long as nothing blocks the sky above it. Nothing at night.
 
 Tip
-Your first flower. Grows wild in plains and forests. One Dawnpetal fills a Small Mana Pool in about 4 minutes of daylight; six do it in under a minute.
+Your first flower. Grows wild in plains and forests. One Dawnpetal fills a Small Mana Pool in about 4 minutes of daylight; six in a clump do it in about a minute (crowding slows each one down).
 
 How to make
 Crafting table: shapeless: Dandelion + Bone Meal
@@ -447,14 +447,14 @@ Helper flowers do a job every 1 second and pay for it from pools within 8 blocks
 
 === Reaper
 Reaper
-Harvests fully grown crops within 5 blocks in every direction (up and down too, so it works planted under the farm) and replants them, including crops from other add-ons. It also cuts sugar cane taller than 1 block, leaving the bottom block to regrow, up to 4 a second. The drops fall on the ground, so pair it with a Collector. 8 mana per crop.
+Harvests fully grown crops within 5 blocks in every direction (up and down too, so it works planted under the farm) and replants them, including crops from other add-ons. Each replant uses up one seed (or carrot/potato) from the drops, or from a chest or barrel next to the Reaper; with no seed the spot is left empty. It also cuts sugar cane taller than 1 block, leaving the bottom block to regrow, up to 4 a second. The drops fall on the ground, so pair it with a Collector. 8 mana per crop.
 
 How to make
 Pool infusion: drop Harvestbloom + Mana Ingot + Iron Hoe into a pool holding 4,000 mana (Small Mana Pool or bigger).
 
 === Collector
 Collector
-Needs a chest or barrel right next to it. Every second it picks up dropped items within 8 blocks and puts them into that chest. 2 mana per stack.
+Needs a chest or barrel right next to it. Every second it picks up dropped items within 8 blocks and puts them into that chest. When the chest is full it leaves items where they lie and spends no mana. 2 mana per stack.
 
 How to make
 Pool infusion: drop Dawnpetal + Mana Ingot + Hopper into a pool holding 4,000 mana (Small Mana Pool or bigger).
@@ -475,7 +475,7 @@ Pool infusion: drop Coalbloom + Mana Ingot + Furnace into a pool holding 4,000 m
 
 === Sorter
 Sorter
-Takes dropped items within 4 blocks and puts each one into a chest or barrel within 4 blocks that already holds the same item. Put one of each item in a chest to "teach" it. 2 mana per stack.
+Takes dropped items within 4 blocks and puts each one into a chest or barrel within 4 blocks that already holds the same item. Put one of each item in a chest to "teach" it. Full chests are skipped, and items with nowhere to go stay on the ground. 2 mana per stack.
 
 How to make
 Pool infusion: drop Dawnpetal + Mana Ingot + Comparator into a pool holding 4,000 mana (Small Mana Pool or bigger).
